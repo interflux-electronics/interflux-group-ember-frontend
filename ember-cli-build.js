@@ -1,24 +1,40 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const ENV = require('./config/environment')(EmberApp.env());
+
+// To make CSS environment aware we assign a new src to output map.
+// The src changes with the environment.
+const cssMap = {};
+cssMap[ENV.environment] = '/assets/app.css';
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
-  });
+    outputPaths: {
+      app: {
+        js: '/assets/app.js',
+        css: cssMap
+      }
+    },
 
-  // Use `app.import` to add additional libraries to the generated
-  // output files.
-  //
-  // If you need to use different assets in different
-  // environments, specify an object as the first parameter. That
-  // object's keys should be the environment name and the values
-  // should be the asset to use in that environment.
-  //
-  // If the library that you are including contains AMD or ES6
-  // modules that you would like to import into your application
-  // please specify an object with the list of modules as keys
-  // along with the exports of each module as its value.
+    // Makes SASS listen to file changes in the component folders
+    sassOptions: {
+      // includePaths: ['app/pods'],
+      overwrite: true,
+      sourceMap: false
+    },
+
+    // Adds CSS browser prefixes
+    autoprefixer: {
+      cascade: false,
+      remove: false
+    },
+
+    // Fingerprint files with the git revision rather than the MD5 to deduct from which deploy.
+    fingerprint: {
+      customHash: ENV.gitRevision
+    }
+  });
 
   return app.toTree();
 };
