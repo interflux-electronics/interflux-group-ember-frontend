@@ -1,0 +1,214 @@
+// All headings, paragraphs and buttons will inherit these font styles from the <body>
+body {
+  font-family: $regular; // Important, we explicitly name fonts, no weights used
+  font-style: normal; // Important, we use weightless fonts
+  font-weight: normal; // Important, we use weightless fonts
+  font-size: 16px;
+  line-height: 130%;
+  margin: 0;
+  background-color: white;
+  color: $grey-7;
+  -webkit-font-smoothing: antialiased; // Without it, fonts will look bloated Chrome and Safari
+  -moz-osx-font-smoothing: grayscale; // Without it, fonts will look bloated Firefox
+
+  width: 100%;
+  height: 100%;
+}
+
+// To avoid <img> and <iframe> to have weird white space below them, make them a block
+iframe,
+img,
+svg {
+  display: block;
+}
+
+blockquote {
+  margin: 0;
+}
+
+// In most cases we use <ul> not as bullet lists and thus we strip them of all browser defaults
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 0;
+  }
+}
+
+// Mobile first designs no longer underline links
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Button border insets are never desired, yet browser default...
+button {
+  &:active {
+    border-style: solid;
+  }
+}
+
+// To prevent browsers from highlighting blue tapped elements
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+// Semantically <table> is sometimes the best way to describe content.
+// When you do, always reset the display rules because they are unpredictable.
+// display: table;
+// display: table-row;
+// display: table-cell;
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+  // display: block;
+}
+th {
+  font-weight: normal; // We use font-families instead of weights
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: normal; // We use font-families instead of weights
+  font-family: $bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 100%;
+  margin: 0; // Counter the browser defaults
+  color: $blue-3;
+}
+
+p {
+  @include paragraph;
+  margin: 0; // Counter the browser defaults
+  a {
+    text-decoration: underline;
+    color: $blue-0;
+    background: white;
+    outline: 0;
+    border-radius: 3px;
+    &:hover {
+      color: $orange-3;
+    }
+    &:focus {
+      color: $blue-0;
+      box-shadow: white 0 0 0 1px, 0 0 0 3px $blue-0;
+    }
+  }
+}
+
+p + p {
+  @include widescreen {
+    margin-top: 16px;
+  }
+  @include desktop {
+    margin-top: 1.333vw;
+  }
+  @include tablet {
+    margin-top: 2.2vw;
+  }
+  @include mobile {
+    margin-top: 5vw;
+  }
+}
+
+dl {
+  margin: 0; // Undo the browser default
+  dd {
+    margin: 0; // Undo the browser default
+  }
+}
+
+.h1 {
+  color: red;
+}
+
+.h2 {
+  font-family: $light;
+  line-height: 140%;
+  color: $grey-7;
+  @include widescreen {
+    font-size: 32px;
+  }
+  @include desktop {
+    font-size: vw(32px);
+  }
+  @include tablet {
+    font-size: vw-tablet(32px);
+  }
+  @include mobile {
+    font-size: vw-mobile(32px);
+  }
+}
+
+.h3 {
+  font-family: $bold;
+  line-height: 150%;
+  color: $grey-7;
+  @include widescreen {
+    font-size: 17px;
+  }
+  @include desktop {
+    font-size: vw(17px);
+  }
+  @include tablet {
+    font-size: vw-tablet(17px);
+  }
+  @include mobile {
+    font-size: vw-mobile(17px);
+  }
+}
+
+.p {
+  font-family: $regular;
+  color: $grey-7;
+  line-height: 180%;
+  margin: 0;
+  @include widescreen {
+    font-size: 16px;
+  }
+  @include desktop {
+    font-size: vw(16px);
+  }
+  @include tablet {
+    font-size: vw-tablet(16px);
+  }
+  @include mobile {
+    font-size: vw-mobile(16px);
+  }
+}
+
+.p + .p {
+  @include widescreen {
+    margin: 16px 0 0;
+  }
+  @include desktop {
+    margin: vw(16px) 0 0;
+  }
+  @include tablet {
+    margin: vw-tablet(16px) 0 0;
+  }
+  @include mobile {
+    margin: vw-mobile(16px) 0 0;
+  }
+}

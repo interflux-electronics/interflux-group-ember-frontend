@@ -1,0 +1,124 @@
+// Variables
+@import 'variables/colours';
+@import 'variables/fonts';
+@import 'variables/easings';
+@import 'variables/images';
+
+// Mixins
+@import 'mixins/responsive';
+@import 'mixins/browser-prefixes';
+@import 'mixins/text';
+@import 'mixins/other';
+
+// Fonts
+@import 'fonts/nunito-sans-embedded';
+
+// Normalise
+@import 'normalise/cross-browser';
+@import 'normalise/cross-project';
+
+header {
+  ul {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    a {
+      color: $grey-7;
+      line-height: 30px;
+      padding: 0 20px;
+    }
+  }
+}
+
+section.screen-high {
+  height: 90vh;
+  padding: 100px;
+  box-sizing: border-box;
+  .liner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+section .liner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section#hero {
+  background-color: $green-3;
+  background-image: url('#{$cdn}/images/group/hero@2400x1400.jpg');
+  background-size: cover;
+  background-position: center;
+  img#logo {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+  }
+  img.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+  }
+  h1 {
+    color: white;
+    max-width: 550px;
+    line-height: 150%;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+section#about-us {
+}
+
+section#what-we-do-1 {
+}
+
+section#what-we-do-2 {
+}
+
+section#what-we-do-3 {
+}
+
+section#locations {
+  background: $blue-4;
+  h2,
+  p {
+    color: white;
+  }
+}
+
+section#managed-by {
+  padding: 100px;
+  box-sizing: border-box;
+  h2 {
+    text-align: center;
+  }
+  ul {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+section#members {
+  background: $grey-0;
+  padding: 100px;
+  box-sizing: border-box;
+  h2 {
+    text-align: center;
+  }
+}
+
+footer {
+  background: $grey-0;
+}

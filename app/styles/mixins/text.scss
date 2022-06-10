@@ -1,0 +1,96 @@
+// Usage:
+// @include paragraph;
+// @include paragraph(0.8);
+@mixin paragraph($scale: 1) {
+  font-family: $regular;
+  color: $grey-7;
+  line-height: 180%;
+  margin: 0;
+  @include widescreen {
+    font-size: 16px * $scale;
+  }
+  @include desktop {
+    font-size: 1.333vw * $scale;
+  }
+  @include tablet {
+    font-size: 2.3vw * $scale;
+  }
+  @include mobile {
+    font-size: 5vw * $scale;
+  }
+}
+
+// Usage:
+// @include light-font;
+// @include light-font(0.8);
+@mixin light-font($scale: 1) {
+  font-family: $light;
+  color: $grey-7;
+  line-height: 150%;
+  text-align: center;
+  @include widescreen {
+    font-size: px(2.6vw * $scale);
+  }
+  @include desktop {
+    font-size: 2.6vw * $scale;
+  }
+  @include tablet {
+    font-size: 4.6vw * $scale;
+  }
+  @include mobile {
+    font-size: 7.4vw * $scale;
+    line-height: 160%;
+  }
+  strong {
+    font-family: $regular;
+  }
+}
+
+// Usage:
+// @include bold-sub-heading;
+// @include bold-sub-heading(0.8);
+@mixin bold-sub-heading($scale: 1) {
+  font-family: $bold;
+  color: $grey-7;
+  line-height: 150%;
+  text-align: left;
+  @include widescreen {
+    font-size: px(1.4vw * $scale);
+  }
+  @include desktop {
+    font-size: 1.4vw * $scale;
+  }
+  @include tablet {
+    font-size: 2.7vw * $scale;
+  }
+  @include mobile {
+    font-size: 4.6vw * $scale;
+    line-height: 160%;
+  }
+}
+
+// Usage:
+// @include white-on-blue-text;
+// @include white-on-blue-text(0.8);
+@mixin white-on-blue-text($scale: 1) {
+  font-family: $extrabold;
+  color: white;
+  background: $blue-3;
+  line-height: 100%;
+  @include widescreen {
+    font-size: px(2.1vw * $scale);
+    padding: px(1vw * $scale) px(2vw * $scale);
+  }
+  @include desktop {
+    font-size: 2.1vw * $scale;
+    padding: 1vw * $scale 2vw * $scale;
+  }
+  @include tablet {
+    font-size: 3.1vw * $scale;
+    padding: 1.6vw * $scale 2.3vw * $scale;
+  }
+  @include mobile {
+    font-size: 5.8vw * $scale;
+    padding: 2.5vw * $scale 4vw * $scale;
+  }
+}
