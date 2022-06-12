@@ -19,7 +19,7 @@ module.exports = function (defaults) {
 
     // Makes SASS listen to file changes in the component folders
     sassOptions: {
-      // includePaths: ['app/pods'],
+      includePaths: ['app/components'],
       overwrite: true,
       sourceMap: false
     },

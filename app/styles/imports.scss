@@ -17,22 +17,8 @@
 @import 'normalise/cross-browser';
 @import 'normalise/cross-project';
 
-header {
-  ul {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    a {
-      color: $grey-7;
-      line-height: 30px;
-      padding: 0 20px;
-    }
-  }
-}
+// Components
+@import 'app/components/left-nav';
 
 section.screen-high {
   height: 90vh;
@@ -59,8 +45,21 @@ section#hero {
   background-position: center;
   img#logo {
     position: absolute;
-    left: 50px;
-    top: 50px;
+    height: auto;
+    @include widescreen {
+      left: 50px;
+      top: 50px;
+      width: 270px;
+    }
+    @include desktop {
+      left: vw(50px);
+      top: vw(50px);
+      width: vw(270px);
+    }
+    @include tablet {
+    }
+    @include mobile {
+    }
   }
   img.bg {
     position: absolute;
@@ -71,14 +70,39 @@ section#hero {
   }
   h1 {
     color: white;
-    max-width: 550px;
-    line-height: 150%;
+    line-height: 180%;
     text-align: center;
     align-items: center;
+    font-family: $bold;
+    @include widescreen {
+      font-size: 32px;
+      max-width: 550px;
+    }
+    @include desktop {
+      font-size: vw(32px);
+      max-width: vw(550px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
   }
 }
 
 section#about-us {
+  height: 90vh;
+  padding: 100px 50px 100px 200px;
+  gap: 50px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 500px;
+    height: auto;
+  }
 }
 
 section#what-we-do-1 {

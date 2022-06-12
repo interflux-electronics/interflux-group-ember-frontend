@@ -179,7 +179,7 @@ dl {
   }
 }
 
-.p {
+p {
   font-family: $regular;
   color: $grey-7;
   line-height: 180%;
@@ -198,7 +198,7 @@ dl {
   }
 }
 
-.p + .p {
+p + p {
   @include widescreen {
     margin: 16px 0 0;
   }
@@ -210,5 +210,20 @@ dl {
   }
   @include mobile {
     margin: vw-mobile(16px) 0 0;
+  }
+}
+
+.h2 + p {
+  @include widescreen {
+    margin-bottom: 16px;
+  }
+  @include desktop {
+    margin: vw(16px) 0 0; // TODO
+  }
+  @include tablet {
+    margin: vw-tablet(16px) 0 0; // TODO
+  }
+  @include mobile {
+    margin: vw-mobile(16px) 0 0; // TODO
   }
 }
