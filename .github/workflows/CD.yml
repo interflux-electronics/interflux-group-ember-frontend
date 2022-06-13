@@ -29,7 +29,7 @@ jobs:
     needs: test
     env:
       PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}
-      URL: bot@server.interflux.group
+      URL: bot@server.interflux.com
       ROOT: /var/www/interflux.group
     steps:
       - uses: actions/checkout@v2
