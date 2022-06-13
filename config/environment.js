@@ -35,6 +35,7 @@ const groupHosts = {
 // Where the CDN is located
 const cdnHosts = {
   development: 'http://localhost:9000',
+  test: 'http://localhost:9000',
   production: 'https://cdn.interflux.com'
 };
 

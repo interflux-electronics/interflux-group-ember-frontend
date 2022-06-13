@@ -12,15 +12,6 @@ module('Integration | Component | left-nav', function (hooks) {
 
     await render(hbs`<LeftNav />`);
 
-    assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <LeftNav>
-        template block text
-      </LeftNav>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('About us What we do Locations Members');
   });
 });

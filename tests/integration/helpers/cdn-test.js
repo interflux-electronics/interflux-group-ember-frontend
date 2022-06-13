@@ -8,10 +8,8 @@ module('Integration | Helper | cdn', function (hooks) {
 
   // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    await render(hbs`{{cdn}}`);
 
-    await render(hbs`{{cdn this.inputValue}}`);
-
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText('http://localhost:9000');
   });
 });

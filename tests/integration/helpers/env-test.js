@@ -8,10 +8,11 @@ module('Integration | Helper | env', function (hooks) {
 
   // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    // this.set('inputValue', 'cdnHost');
 
-    await render(hbs`{{env this.inputValue}}`);
+    // await render(hbs`{{env 'this.inputValue'}}`);
+    await render(hbs`{{env 'cdnHost'}}`);
 
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText('http://localhost:9000');
   });
 });
