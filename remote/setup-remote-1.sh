@@ -55,6 +55,24 @@ esac
 done
 
 echo "----------"
+echo "Have the repository secrets been added to Github?"
+
+while :
+do
+read -s -n 1 input
+case $input in
+  y)
+    echo "Great!"
+    break;
+    ;;
+  n)
+    echo "Quit"
+    exit 0;
+    ;;
+esac
+done
+
+echo "----------"
 echo "Creating project"
 echo "----------"
 echo "Domain: $domain"
