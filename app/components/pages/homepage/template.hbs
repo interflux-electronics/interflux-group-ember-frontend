@@ -1,15 +1,21 @@
 <main id='home'>
   <LeftNav />
 
-  <section id='hero' class='screen-high'>
+  <section id='hero' aria-labelledby='h1'>
+    <div class='bg'>
+      <div class='preload'></div>
+      <div class='high-res'></div>
+    </div>
+
+    <img
+      id='logo'
+      src='{{cdn}}/images/logos/interflux-group-logo-white.svg'
+      alt='Interflux Group'
+      width='1000'
+      height='253'
+    />
+
     <div class='liner'>
-      <img
-        id='logo'
-        src='{{cdn}}/images/logos/interflux-group-logo-white.svg'
-        alt='Interflux Group'
-        width='1000'
-        height='253'
-      />
       <h1>
         <span>Chemistry, machines and know-how </span>
         <span>for the electonics industry</span>
@@ -17,7 +23,7 @@
     </div>
   </section>
 
-  <section id='about-us'>
+  <Section @id='about-us'>
     <div class='text'>
       <h2 class='h2'>About us</h2>
       <p>The Interflux Group is an international network of companies supplying
@@ -31,9 +37,9 @@
       height='557'
       alt='stencil printing, circuit board and selective soldering fountain'
     />
-  </section>
+  </Section>
 
-  <section id='what-we-do-1' class='screen-high'>
+  <Section @id='what-we-do-1' @class='screen-high'>
     <div class='text'>
       <h3 class='h3'>What we do #1</h3>
       <h2 class='h2'>Soldering chemistry for electronics</h2>
@@ -48,9 +54,9 @@
       height='342'
       alt='X-ray close up of a perfect wetting on the soldering joint of an electronics component'
     />
-  </section>
+  </Section>
 
-  <section id='activity-2' class='screen-high'>
+  <Section @id='activity-2' @class='screen-high'>
     <div class='text'>
       <h3 class='h3'>What we do #2</h3>
       <h2 class='h2'>Equipment for electronics manufacturing</h2>
@@ -66,9 +72,9 @@
       height='495'
       alt='Ersa preheating oven'
     />
-  </section>
+  </Section>
 
-  <section id='activity-3' class='screen-high'>
+  <Section @id='activity-3' @class='screen-high'>
     <div class='text'>
       <h3 class='h3'>What we do #3</h3>
       <h2 class='h2'>Know-how</h2>
@@ -84,94 +90,9 @@
       height='471'
       alt='two people in a laboratory pointing at a screen'
     />
-  </section>
+  </Section>
 
-  <section id='locations' class='screen-high'>
-    <div class='liner'>
-      <h2>Coordinated by 14 companies across the world</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <h2>Servicing 89+ countries</h2>
-      <p>Active in 15. Duis aute irure dolor in reprehenderit in voluptate velit
-        esse cillum dolore.</p>
-    </div>
-  </section>
-
-  <section id='managed-by'>
-    <div class='liner'>
-      <h2>Managed by</h2>
-      <ul>
-        <li>
-          <h3>Daniel Werkhoven</h3>
-          <p>Founder, Director & CEO</p>
-        </li>
-        <li>
-          <h3>Steven Teliszewski</h3>
-          <p>Chief Operating Officer</p>
-        </li>
-        <li>
-          <h3>Annick Peeters</h3>
-          <p>Chief Operating Officer</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id='members'>
-    <div class='liner'>
-      <h2>Members</h2>
-      <ul>
-        <li>
-          <h3>Interflux Electronics</h3>
-        </li>
-
-        <li>
-          <h3>Interflux China</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Singapore</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Sweden</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Norway</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Denmark</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Estonia</h3>
-        </li>
-
-        <li>
-          <h3>Interflux France</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Poland</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Australia</h3>
-        </li>
-
-        <li>
-          <h3>Interflux Mexico</h3>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <Pages::Homepage::Locations />
+  <Pages::Homepage::Managers />
+  <Pages::Homepage::Members />
 </main>
-
-<footer>
-  <img
-    src='{{env "cdnHost"}}/images/logos/Interflux-symbol-grey.svg'
-    alt='Interflux symbol'
-  />
-</footer>

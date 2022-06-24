@@ -1,0 +1,71 @@
+#home #managers {
+  h2 {
+    text-align: center;
+    @include widescreen {
+      margin: 80px 0;
+    }
+    @include desktop {
+      margin: vw(80px) 0;
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include widescreen {
+      gap: 80px;
+      margin: 80px 0 100px;
+    }
+    @include desktop {
+      gap: vw(80px);
+      margin: vw(80px) 0 vw(100px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+    li {
+      display: flex;
+      align-items: center;
+      @include widescreen {
+        gap: 18px;
+      }
+      @include desktop {
+        gap: vw(18px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        // TODO
+      }
+      img {
+        border-radius: 50%;
+        height: auto;
+        @include widescreen {
+          width: 75px;
+        }
+        @include desktop {
+          width: vw(75px);
+        }
+        @include tablet {
+        }
+        @include mobile {
+        }
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}

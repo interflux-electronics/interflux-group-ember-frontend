@@ -1,0 +1,52 @@
+#home #members .slide {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  .white-pane {
+    background: white;
+    box-shadow: 0 4px 14px rgba(black, 0.15);
+    border-radius: 4px;
+    @include widescreen {
+      width: 600px;
+    }
+    @include desktop {
+      width: vw(600px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+
+    .logo {
+      background-color: $blue-4;
+      border-radius: 4px 4px 0 0;
+      @include widescreen {
+        height: 300px;
+      }
+      @include desktop {
+        height: vw(300px);
+      }
+      @include tablet {
+      }
+      @include mobile {
+      }
+    }
+
+    .content {
+      @include widescreen {
+        padding: 65px;
+      }
+      @include desktop {
+        padding: vw(65px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        // TODO
+      }
+    }
+  }
+}
