@@ -1,0 +1,128 @@
+#home #activities {
+  ul {
+    display: flex;
+    flex-direction: column;
+    @include widescreen {
+      gap: 200px;
+      padding: 150px 0 250px;
+    }
+    @include desktop {
+      gap: vw(200px);
+      padding: vw(150px) 0 vw(250px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include widescreen {
+        padding: 0 60px 0 180px;
+        gap: 60px;
+      }
+      @include desktop {
+        padding-left: 0 vw(60px) 0 vw(180px);
+        gap: vw(60px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        // TODO
+      }
+      &#chemistry {
+        flex-direction: row-reverse;
+        h2 {
+          width: 70%;
+        }
+        img {
+          height: auto;
+          @include widescreen {
+            width: 480px;
+          }
+          @include desktop {
+            width: vw(480px);
+          }
+          @include tablet {
+            // TODO
+          }
+          @include mobile {
+            // TODO
+          }
+        }
+      }
+      &#machines {
+        align-items: flex-start;
+        .text {
+          position: relative;
+          z-index: 1;
+          h2 {
+            width: 160%;
+          }
+          p {
+            width: 200%;
+            span {
+              display: block;
+            }
+          }
+        }
+        img {
+          height: auto;
+          @include widescreen {
+            width: 660px;
+            transform: translateY(80px);
+            padding-top: 40px;
+          }
+          @include desktop {
+            width: vw(660px);
+            transform: translateY(0.666vw);
+            padding-top: vw(40px);
+          }
+          @include tablet {
+            // TODO
+          }
+          @include mobile {
+            // TODO
+          }
+        }
+      }
+      &#know-how {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        img {
+          height: auto;
+          @include widescreen {
+            width: 520px;
+          }
+          @include desktop {
+            width: vw(520px);
+          }
+          @include tablet {
+            // TODO
+          }
+          @include mobile {
+            // TODO
+          }
+        }
+      }
+      h2 {
+        @include widescreen {
+          margin: 20px 0 15px;
+        }
+        @include desktop {
+          margin: vw(20px) 0 vw(15px);
+        }
+        @include tablet {
+          // TODO
+        }
+        @include mobile {
+          // TODO
+        }
+      }
+    }
+  }
+}

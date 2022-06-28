@@ -215,7 +215,7 @@ p + p {
 
 .h2 + p {
   @include widescreen {
-    margin-bottom: 16px;
+    margin-top: 16px;
   }
   @include desktop {
     margin: vw(16px) 0 0; // TODO

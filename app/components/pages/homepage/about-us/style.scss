@@ -1,0 +1,36 @@
+#home #about-us {
+  .liner {
+    display: flex;
+    align-items: center;
+    @include widescreen {
+      padding: 180px 60px 70px 180px;
+      gap: 40px;
+    }
+    @include desktop {
+      padding: vw(180px) vw(60px) vw(70px) vw(180px);
+      gap: vw(40px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+  }
+  .text {
+    @include widescreen {
+      transform: translateY(-70px);
+    }
+    @include desktop {
+      transform: translateY(-5.8333vw);
+    }
+    @include tablet {
+    }
+    @include mobile {
+    }
+  }
+  img {
+    width: 580px;
+    height: auto;
+  }
+}
