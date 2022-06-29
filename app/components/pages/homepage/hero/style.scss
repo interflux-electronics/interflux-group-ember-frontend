@@ -1,9 +1,7 @@
 #home #hero {
   position: relative;
   overflow: hidden;
-
   background-color: $green-3;
-
   @include widescreen {
     height: 90vh;
     max-height: 800px;
@@ -18,7 +16,6 @@
   @include mobile {
     height: 100vw; // TODO
   }
-
   .liner {
     height: 100%;
     display: flex;
@@ -37,12 +34,11 @@
 
   .bg {
     position: absolute;
+    width: 100%;
     @include widescreen {
-      width: 1400px;
       height: 800px;
     }
     @include desktop {
-      width: vw(1400px);
       height: vw(800px);
     }
     @include tablet {
@@ -60,8 +56,12 @@
       width: 100%;
       height: 100%;
       background-repeat: no-repeat;
-      background-position: center;
-      background-size: auto 100%;
+      background-attachment: fixed;
+      background-size: 1400px auto;
+      background-position: top;
+      @media (min-width: 1401px) {
+        background-size: 100% auto;
+      }
       @include mobile {
         background-position: 45% 50%;
       }
@@ -80,17 +80,21 @@
     line-height: 100%;
     text-align: center;
     position: relative;
-    background-color: rgba($green-3, 0.7);
     transform: translateY(40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include widescreen {
       font-size: 32px;
       padding: 6px 12px;
-      max-width: 550px;
+      max-width: 580px;
+      gap: 10px;
     }
     @include desktop {
       font-size: vw(32px);
       padding: vw(6px) vw(12px);
-      max-width: vw(550px);
+      max-width: vw(580px);
+      gap: vw(10px);
     }
     @include tablet {
       font-size: vw-tablet(32px);
@@ -99,6 +103,10 @@
     @include mobile {
       font-size: vw-mobile(32px);
       padding: vw-mobile(6px) vw-mobile(12px);
+    }
+    span {
+      background-color: rgba($green-3, 0.7);
+      padding: 4px 8px;
     }
   }
   img#logo {
