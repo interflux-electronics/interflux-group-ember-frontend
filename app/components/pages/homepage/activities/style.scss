@@ -2,6 +2,7 @@
   ul {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     @include widescreen {
       gap: 200px;
       padding: 150px 0 250px;
@@ -20,6 +21,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 1000ms $easeOutExpo;
+      transition-property: transform, opacity;
+      transform: translateX(50vw);
+      opacity: 0;
       @include widescreen {
         padding: 0 60px 0 180px;
         gap: 60px;
@@ -33,6 +38,10 @@
       }
       @include mobile {
         // TODO
+      }
+      &.in-view {
+        transform: translateX(0);
+        opacity: 1;
       }
       &#chemistry {
         flex-direction: row-reverse;
