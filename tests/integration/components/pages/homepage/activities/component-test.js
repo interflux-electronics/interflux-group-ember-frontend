@@ -7,20 +7,18 @@ module('Integration | Component | pages/homepage/activities', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<Pages::Homepage::Activities />`);
 
-    assert.dom(this.element).hasText('');
+    const headings = this.element.querySelectorAll('h2');
+    const expected = [
+      'Chemistry for soldering electronics',
+      'Equipment for manufacturing electronics',
+      'Know-how transfers'
+    ];
 
-    // Template block usage:
-    await render(hbs`
-      <Pages::Homepage::Activities>
-        template block text
-      </Pages::Homepage::Activities>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.strictEqual(headings.length, 3);
+    assert.strictEqual(headings[0].innerText, expected[0]);
+    assert.strictEqual(headings[1].innerText, expected[1]);
+    assert.strictEqual(headings[2].innerText, expected[2]);
   });
 });

@@ -7,20 +7,18 @@ module('Integration | Component | pages/homepage/managers', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<Pages::Homepage::Managers />`);
 
-    assert.dom(this.element).hasText('');
+    const headings = this.element.querySelectorAll('h3');
+    const expected = [
+      'Daniel Werkhoven',
+      'Steven Teliszewski',
+      'Annick Peeters'
+    ];
 
-    // Template block usage:
-    await render(hbs`
-      <Pages::Homepage::Managers>
-        template block text
-      </Pages::Homepage::Managers>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.strictEqual(headings.length, 3);
+    assert.strictEqual(headings[0].innerText, expected[0]);
+    assert.strictEqual(headings[1].innerText, expected[1]);
+    assert.strictEqual(headings[2].innerText, expected[2]);
   });
 });

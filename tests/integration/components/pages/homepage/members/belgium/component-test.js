@@ -9,21 +9,10 @@ module(
     setupRenderingTest(hooks);
 
     test('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-
       await render(hbs`<Pages::Homepage::Members::Belgium />`);
 
-      assert.dom(this.element).hasText('');
-
-      // Template block usage:
-      await render(hbs`
-      <Pages::Homepage::Members::Belgium>
-        template block text
-      </Pages::Homepage::Members::Belgium>
-    `);
-
-      assert.dom(this.element).hasText('template block text');
+      assert.dom('h3').exists();
+      assert.dom('h3').hasText('Interflux Electronics');
     });
   }
 );

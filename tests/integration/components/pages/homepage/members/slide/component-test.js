@@ -9,21 +9,9 @@ module(
     setupRenderingTest(hooks);
 
     test('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-
       await render(hbs`<Pages::Homepage::Members::Slide />`);
 
-      assert.dom(this.element).hasText('');
-
-      // Template block usage:
-      await render(hbs`
-      <Pages::Homepage::Members::Slide>
-        template block text
-      </Pages::Homepage::Members::Slide>
-    `);
-
-      assert.dom(this.element).hasText('template block text');
+      assert.dom('li.slide').exists();
     });
   }
 );
