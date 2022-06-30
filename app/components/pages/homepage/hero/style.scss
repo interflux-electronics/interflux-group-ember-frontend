@@ -69,9 +69,10 @@
     // High-resolution image
     .high-res {
       background-image: url('#{$cdn}/images/group/hero@1400x800.webp');
-      @include retina {
-        // background-image: url('#{$cdn}/images/group/hero@2400x1600.webp');
-      }
+      // We don't use a retina version because the original image does not have enough resolution
+      // @include retina {
+      //   background-image: url('#{$cdn}/images/group/hero@2800x1600.webp');
+      // }
     }
   }
   h1 {
