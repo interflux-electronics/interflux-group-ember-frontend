@@ -8,7 +8,7 @@ const gitBranch = git.branch();
 const gitRevision = git.short();
 
 // The Rails API namespace
-const apiNamespace = 'v1/admin';
+const apiNamespace = 'v1/public';
 
 // Where the Rails backend is located
 const apiHosts = {
