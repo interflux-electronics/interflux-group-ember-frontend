@@ -1,7 +1,91 @@
 #home #locations {
   background: $blue-4;
-  h2,
-  p {
-    color: white;
+  position: relative;
+  #mapbox {
+    position: relative;
+    z-index: 1;
+    @include widescreen {
+      // height: 700px;
+      height: 60vw;
+    }
+    @include desktop {
+      // height: vw(700px);
+      height: 60vw;
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+  }
+  .text {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    @include widescreen {
+      padding-left: 22vw;
+    }
+    @include desktop {
+      padding-left: 22vw;
+    }
+    @include tablet {
+    }
+    @include mobile {
+    }
+    h2,
+    p {
+      color: white;
+      &:nth-of-type(1) {
+        @include widescreen {
+          width: 240px;
+        }
+        @include desktop {
+          width: vw(240px);
+        }
+        @include tablet {
+        }
+        @include mobile {
+        }
+      }
+      &:nth-of-type(2) {
+        @include widescreen {
+          width: 366px;
+        }
+        @include desktop {
+          width: vw(366px);
+        }
+        @include tablet {
+        }
+        @include mobile {
+        }
+      }
+    }
+    h2 {
+      font-family: $light;
+      line-height: 140%;
+      @include widescreen {
+        font-size: 32px;
+        margin: 42px 0 12px;
+      }
+      @include desktop {
+        font-size: vw(32px);
+        margin: vw(42px) 0 vw(12px);
+      }
+      @include tablet {
+      }
+      @include mobile {
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
