@@ -1,6 +1,19 @@
 <section id='locations'>
   <div id='mapbox' {{did-insert this.onInsertMap}}></div>
 
+  {{! Markers are rendered here first, but soon after appended to Mapbox. }}
+  <div id='markers'>
+    {{#each this.companies as |c|}}
+      <div id='marker-for-{{c.slug}}' class='marker'>
+        <Svg::Marker />
+      </div>
+
+      <div id='shadow-for-{{c.slug}}' class='shadow'>
+        <Svg::MarkerShadow />
+      </div>
+    {{/each}}
+  </div>
+
   <div class='text'>
     <h2>Coordinated by 14 companies across the world</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -8,5 +21,7 @@
     <h2>Servicing 89+ countries</h2>
     <p>Active in 15. Duis aute irure dolor in reprehenderit in voluptate velit
       esse cillum dolore.</p>
+    <Waypoint @onFirstView={{this.onFirstView}} />
   </div>
+
 </section>

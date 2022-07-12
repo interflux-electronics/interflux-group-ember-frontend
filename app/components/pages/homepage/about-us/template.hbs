@@ -1,15 +1,18 @@
-<Section @id='about-us'>
-  <div class='text'>
-    <h2 class='h2'>About us</h2>
-    <p>The Interflux Group is an international network of companies supplying
-      the electronics manufacturing industry with equipment, soldering chemistry
-      and know-how.</p>
-  </div>
+<section id='about-us' class={{if this.inView 'show' 'hide'}}>
+  <div class='liner'>
+    <div class='text'>
+      <h2 class='h2'>About us</h2>
+      <p>The Interflux Group is an international network of companies supplying
+        the electronics manufacturing industry with equipment, soldering
+        chemistry and know-how.</p>
+      <Waypoint @onFirstView={{fn (mut this.inView)}} />
+    </div>
 
-  <img
-    src='{{cdn}}/images/group/about-us@1184x1114.jpg'
-    width='592'
-    height='557'
-    alt='stencil printing, circuit board and selective soldering fountain'
-  />
-</Section>
+    <img
+      src='{{cdn}}/images/group/about-us@1184x1114.jpg'
+      width='592'
+      height='557'
+      alt='stencil printing, circuit board and selective soldering fountain'
+    />
+  </div>
+</section>

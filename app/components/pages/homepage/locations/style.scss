@@ -1,3 +1,23 @@
+@keyframes drop {
+  0% {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0) translateY(50%);
+  }
+  100% {
+    transform: scale(1) translateY(50%);
+  }
+}
+
 #home #locations {
   background: $blue-4;
   position: relative;
@@ -5,11 +25,9 @@
     position: relative;
     z-index: 1;
     @include widescreen {
-      // height: 700px;
       height: 60vw;
     }
     @include desktop {
-      // height: vw(700px);
       height: 60vw;
     }
     @include tablet {
@@ -19,22 +37,67 @@
       // TODO
     }
   }
+  #markers {
+    display: none;
+  }
+  .mapboxgl-marker {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    @include widescreen {
+      width: 30px;
+      height: 30px;
+    }
+    @include desktop {
+      width: vw(30px);
+      height: vw(30px);
+    }
+    @include tablet {
+      // TODO
+      width: 2vw;
+      height: 2vw;
+    }
+    @include mobile {
+      // TODO
+      width: 2vw;
+      height: 2vw;
+    }
+    &.shadow {
+      z-index: 1;
+      svg {
+        width: 80%;
+        height: auto;
+        animation: scale 1000ms $easeOutExpo;
+        transform: translateY(50%);
+      }
+    }
+    &.marker {
+      z-index: 2;
+      svg {
+        width: 100%;
+        height: auto;
+        animation: drop 1000ms $easeOutExpo;
+        .border {
+          opacity: 0;
+        }
+      }
+    }
+  }
   .text {
     position: absolute;
     z-index: 2;
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
     @include widescreen {
-      padding-left: 22vw;
+      left: 22vw;
     }
     @include desktop {
-      padding-left: 22vw;
+      left: 22vw;
     }
     @include tablet {
     }

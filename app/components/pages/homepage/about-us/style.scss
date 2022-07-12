@@ -1,4 +1,45 @@
 #home #about-us {
+  &.hide {
+    .text {
+      opacity: 0;
+      transform: translateY(-20vh);
+    }
+    img {
+      opacity: 0;
+      transform: translateY(20vh);
+    }
+  }
+  .text,
+  img {
+    transition: all 2000ms $easeOutExpo;
+  }
+  .text {
+    position: relative;
+    z-index: 1;
+    h2 {
+      width: 160%;
+    }
+    p {
+      max-width: 200%;
+      span {
+        display: block;
+      }
+    }
+    @include widescreen {
+      transform: translateY(-70px);
+    }
+    @include desktop {
+      transform: translateY(-5.8333vw);
+    }
+    @include tablet {
+    }
+    @include mobile {
+    }
+  }
+  img {
+    width: 580px;
+    height: auto;
+  }
   .liner {
     display: flex;
     align-items: center;
@@ -16,21 +57,5 @@
     @include mobile {
       // TODO
     }
-  }
-  .text {
-    @include widescreen {
-      transform: translateY(-70px);
-    }
-    @include desktop {
-      transform: translateY(-5.8333vw);
-    }
-    @include tablet {
-    }
-    @include mobile {
-    }
-  }
-  img {
-    width: 580px;
-    height: auto;
   }
 }

@@ -1,8 +1,8 @@
 #home #activities {
+  overflow: hidden;
   ul {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     @include widescreen {
       gap: 200px;
       padding: 150px 0 250px;
@@ -23,8 +23,6 @@
       align-items: center;
       transition: all 1000ms $easeOutExpo;
       transition-property: transform, opacity;
-      transform: translateX(50vw);
-      opacity: 0;
       @include widescreen {
         padding: 0 60px 0 180px;
         gap: 60px;
@@ -39,12 +37,22 @@
       @include mobile {
         // TODO
       }
-      &.in-view {
-        transform: translateX(0);
-        opacity: 1;
-      }
       &#chemistry {
         flex-direction: row-reverse;
+        &.hide {
+          .text {
+            opacity: 0;
+            transform: translateY(-20vh);
+          }
+          img {
+            opacity: 0;
+            transform: translateY(20vh);
+          }
+        }
+        .text,
+        img {
+          transition: all 2000ms $easeOutExpo;
+        }
         h2 {
           width: 70%;
         }
@@ -66,6 +74,20 @@
       }
       &#machines {
         align-items: flex-start;
+        &.hide {
+          .text {
+            opacity: 0;
+            transform: translateX(-20vw);
+          }
+          img {
+            opacity: 0;
+            transform: translateX(20vw);
+          }
+        }
+        .text,
+        img {
+          transition: all 2000ms $easeOutExpo;
+        }
         .text {
           position: relative;
           z-index: 1;
@@ -102,6 +124,20 @@
       &#know-how {
         flex-direction: row-reverse;
         align-items: flex-end;
+        &.hide {
+          .text {
+            opacity: 0;
+            transform: translateY(-20vw);
+          }
+          img {
+            opacity: 0;
+            transform: translateY(20vw);
+          }
+        }
+        .text,
+        img {
+          transition: all 2000ms $easeOutExpo;
+        }
         img {
           height: auto;
           @include widescreen {

@@ -1,12 +1,13 @@
 <Section @id='activities'>
-  <ul {{did-insert this.onInsert}}>
-    <li id='chemistry'>
+  <ul>
+    <li id='chemistry' class={{if this.showChemistry 'show' 'hide'}}>
       <div class='text'>
         <h3 class='h3'>Our speciality</h3>
         <h2 class='h2'>Chemistry for soldering electronics</h2>
         <p>The Interflux Group sells and supports the soldering materials
           produced by Interflux Electronics. Other materials in the portfolio
           are adhesives, cleaners, conformal coatings etc…</p>
+        <Waypoint @onFirstView={{fn (mut this.showChemistry)}} />
       </div>
 
       <img
@@ -17,7 +18,7 @@
       />
     </li>
 
-    <li id='machines'>
+    <li id='machines' class={{if this.showMachines 'show' 'hide'}}>
       <div class='text'>
         <h3 class='h3'>Our purpose</h3>
         <h2 class='h2'>Equipment for manufacturing electronics</h2>
@@ -30,6 +31,7 @@
           <span>develops and manufactures jet and </span>
           <span>spray fluxing systems.</span>
         </p>
+        <Waypoint @onFirstView={{fn (mut this.showMachines)}} />
       </div>
 
       <img
@@ -40,7 +42,7 @@
       />
     </li>
 
-    <li id='know-how'>
+    <li id='know-how' class={{if this.showKnowhow 'show' 'hide'}}>
       <div class='text'>
         <h3 class='h3'>Our passion</h3>
         <h2 class='h2'>Know-how transfers</h2>
@@ -48,6 +50,7 @@
           with our customers by means of free webinars, on site trainings and
           start-ups. Good process knowledge is essential to produce a high
           quality end product.</p>
+        <Waypoint @onFirstView={{fn (mut this.showKnowhow)}} />
       </div>
 
       <img

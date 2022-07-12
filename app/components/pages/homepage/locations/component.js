@@ -60,26 +60,40 @@ export default class PagesHomepageLocationsComponent extends Component {
     this.companies = await this.store.query('company', {
       filter: { businessName: '~*Interflux' }
     });
+    // Wait for the markers to render in the DOM.
+    await this.window.delay(1);
     this.addMarkers();
   }
 
-  addMarkers() {
-    if (this.map && this.companies) {
-      this.companies.forEach((company) => {
-        new window.mapboxgl.Marker()
-          .setLngLat({ lon: company.longitude, lat: company.latitude })
-          .addTo(this.map);
-        // const marker = document.querySelector(`#marker-for-${company.slug}`);
-        // const shadow = document.querySelector(`#shadow-for-${company.slug}`);
-        //
-        // new window.mapboxgl.Marker({ anchor: 'bottom', element: shadow })
-        //   .setLngLat({ lon: company.longitude, lat: company.latitude })
-        //   .addTo(this.mapbox.map);
-        //
-        // new window.mapboxgl.Marker({ anchor: 'bottom', element: marker })
-        //   .setLngLat({ lon: company.longitude, lat: company.latitude })
-        //   .addTo(this.mapbox.map);
-      });
+  async addMarkers() {
+    const ready = this.map && this.companies && this.inView;
+    if (!ready) {
+      return;
     }
+    this.companies.forEach((company, i) => {
+      this.addMarker(company, i * 100);
+    });
+  }
+
+  async addMarker(company, delay) {
+    await this.window.delay(delay);
+
+    const marker = document.querySelector(`#marker-for-${company.slug}`);
+    const shadow = document.querySelector(`#shadow-for-${company.slug}`);
+
+    new window.mapboxgl.Marker({ anchor: 'bottom', element: shadow })
+      .setLngLat({ lon: company.longitude, lat: company.latitude })
+      .addTo(this.map);
+
+    new window.mapboxgl.Marker({ anchor: 'bottom', element: marker })
+      .setLngLat({ lon: company.longitude, lat: company.latitude })
+      .addTo(this.map);
+  }
+
+  @tracked inView = false;
+
+  @action onFirstView() {
+    this.inView = true;
+    this.addMarkers();
   }
 }
