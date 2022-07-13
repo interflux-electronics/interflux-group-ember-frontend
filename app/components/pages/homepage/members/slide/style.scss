@@ -19,20 +19,43 @@
       // TODO
     }
     .hero {
-    }
-
-    .logo {
-      background-color: $blue-4;
-      border-radius: 4px 4px 0 0;
-      @include widescreen {
-        height: 300px;
+      width: 600px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      > img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
       }
-      @include desktop {
-        height: vw(300px);
-      }
-      @include tablet {
-      }
-      @include mobile {
+      .logo {
+        position: relative;
+        z-index: 1;
+        background-color: rgba($blue-4, 0.85);
+        border-radius: 4px 4px 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include widescreen {
+          width: 300px;
+          height: 108px;
+        }
+        @include desktop {
+          width: vw(300px);
+          height: vw(108px);
+        }
+        @include tablet {
+        }
+        @include mobile {
+        }
+        img {
+          height: auto;
+          width: 89%;
+        }
       }
     }
 
