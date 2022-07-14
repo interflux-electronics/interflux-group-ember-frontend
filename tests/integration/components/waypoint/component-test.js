@@ -7,20 +7,7 @@ module('Integration | Component | waypoint', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<Waypoint />`);
-
-    assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <Waypoint>
-        template block text
-      </Waypoint>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.dom('.waypoint').exists();
   });
 });

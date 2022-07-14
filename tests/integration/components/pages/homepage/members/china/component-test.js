@@ -12,7 +12,7 @@ module(
       await render(hbs`<Pages::Homepage::Members::China />`);
 
       assert.dom('h3').exists();
-      assert.dom('h3').hasText('Interflux China');
+      assert.dom('h3').hasText('Core activities');
     });
   }
 );
