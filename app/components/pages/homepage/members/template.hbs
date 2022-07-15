@@ -1,51 +1,40 @@
 <section id='members'>
   <h2 class='h3'>Members</h2>
-  <ul>
-    <Pages::Homepage::Members::Belgium />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::Singapore />
+  <nav id='dots'>
+    {{#if this.companies}}
+      {{#each this.companies as |company position|}}
+        <button onclick={{fn this.goTo position}} type='button'>
+          <div class='dot'></div>
+        </button>
+      {{/each}}
+    {{/if}}
+  </nav>
+  <nav>
+    <Button
+      @icon='chevron-left'
+      @theme='square'
+      @onClick={{this.prevCompany}}
+    />
+    <Button
+      @icon='chevron-left'
+      @theme='square'
+      @onClick={{this.nextCompany}}
+    />
+    <button onclick={{this.prevCompany}} type='button'>Prev</button>
+    <button onclick={{this.nextCompany}} type='button'>Next</button>
+  </nav>
 
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-    <Pages::Homepage::Members::China />
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Sweden</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Norway</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Denmark</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Estonia</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux France</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Poland</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Australia</h3>
-    </Pages::Homepage::Members::Slide>
-
-    <Pages::Homepage::Members::Slide>
-      <h3>Interflux Mexico</h3>
-    </Pages::Homepage::Members::Slide>
-  </ul>
+  <div id='slides'>
+    {{#if this.companies}}
+      <ul>
+        {{#each this.companies as |company|}}
+          <Pages::Homepage::Members::Slide @company={{company}} />
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>Loading</p>
+    {{/if}}
+  </div>
 
   <img
     src='{{cdn}}/images/group/interflux-symbol-grey.svg'

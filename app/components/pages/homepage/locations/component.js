@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import ENV from 'interflux-group/config/environment';
+// import ENV from 'interflux-group/config/environment';
 
 export default class PagesHomepageLocationsComponent extends Component {
   @service store;
@@ -13,17 +13,18 @@ export default class PagesHomepageLocationsComponent extends Component {
 
   @action
   onInsertMap() {
-    this.waitForMapBoxReady();
-    this.loadCompanies();
+    this.waitForMapbox();
+    // this.loadCompanies();
   }
 
-  async waitForMapBoxReady() {
+  async waitForMapbox() {
     let ready = false;
 
     while (!ready) {
       if (window.mapboxgl) {
         ready = true;
         this.renderMap();
+        this.addMarkers();
       }
       await this.window.delay(100);
     }
@@ -49,21 +50,19 @@ export default class PagesHomepageLocationsComponent extends Component {
     });
 
     this.map = map;
-
-    this.addMarkers();
   }
 
-  async loadCompanies() {
-    if (ENV.isTest) {
-      return;
-    }
-    this.companies = await this.store.query('company', {
-      filter: { businessName: '~*Interflux' }
-    });
-    // Wait for the markers to render in the DOM.
-    await this.window.delay(1);
-    this.addMarkers();
-  }
+  // async loadCompanies() {
+  //   if (ENV.isTest) {
+  //     return;
+  //   }
+  //   this.companies = await this.store.query('company', {
+  //     filter: { businessName: '~*Interflux' }
+  //   });
+  //   // Wait for the markers to render in the DOM.
+  //   await this.window.delay(1);
+  //   this.addMarkers();
+  // }
 
   async addMarkers() {
     const ready = this.map && this.companies && this.inView;

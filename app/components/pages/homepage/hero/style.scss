@@ -5,10 +5,12 @@
   @include widescreen {
     height: 90vh;
     max-height: 800px;
+    min-height: 500px;
   }
   @include desktop {
     height: 90vh;
     max-height: vw(800px);
+    min-height: vw(500px);
   }
   @include tablet {
     height: 50vw; // TODO
