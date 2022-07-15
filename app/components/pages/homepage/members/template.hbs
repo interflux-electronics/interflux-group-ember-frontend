@@ -1,6 +1,6 @@
 <section id='members'>
   <h2 class='h3'>Members</h2>
-  <nav id='dots'>
+  <nav id='dots' aria-label='slides'>
     {{#if this.companies}}
       {{#each this.companies as |company position|}}
         <button onclick={{fn this.goTo position}} type='button'>
@@ -9,7 +9,8 @@
       {{/each}}
     {{/if}}
   </nav>
-  <nav>
+
+  <nav id='buttons' aria-label='buttons'>
     <Button
       @icon='chevron-left'
       @theme='square'

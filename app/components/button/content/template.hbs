@@ -1,1 +1,13 @@
-{{yield}}
+{{#if (has-block)}}
+  {{yield}}
+{{/if}}
+{{#if @icon}}
+  {{#if this.iconIsValid}}
+    <div class='icon'>
+      {{component (concat 'svg/' @icon)}}
+    </div>
+  {{/if}}
+{{/if}}
+{{#if @text}}
+  <span>{{@text}}</span>
+{{/if}}
