@@ -42,6 +42,8 @@ export default class PagesHomepageMembersComponent extends Component {
 
   @action
   onInsert() {
-    this.goTo(0);
+    if (this.companies) {
+      this.goTo(0);
+    }
   }
 }
