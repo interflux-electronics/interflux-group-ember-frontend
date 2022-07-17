@@ -39,4 +39,9 @@ export default class PagesHomepageMembersComponent extends Component {
     }
     this.currentSlide = i;
   }
+
+  @action
+  onInsert() {
+    this.goTo(0);
+  }
 }

@@ -17,8 +17,11 @@
     </div>
 
     <div class='content'>
-      <h4 class='h3'>Core Activity</h4>
-      <p>{{@company.description}}</p>
+      {{#if @company.description}}
+        <h4 class='h3'>Core Activity</h4>
+        <p>{{@company.description}}</p>
+      {{/if}}
+
       {{#if @company.members}}
         <h4 class='h3'>Team</h4>
         <div class='members'>

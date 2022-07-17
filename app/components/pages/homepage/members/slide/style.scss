@@ -25,6 +25,19 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      overflow: hidden;
+      @include widescreen {
+        border-radius: 5px 5px 0 0;
+      }
+      @include desktop {
+        border-radius: vw(5px) vw(5px) 0 0;
+      }
+      @include tablet {
+        border-radius: 5px 5px 0 0; // TODO
+      }
+      @include mobile {
+        border-radius: 5px 5px 0 0; // TODO
+      }
       > img {
         width: 100%;
         height: auto;
@@ -74,35 +87,36 @@
       @include mobile {
         // TODO
       }
-
+      h4 + p {
+        margin-top: 16px;
+      }
+      p + h4 {
+        margin-top: 40px;
+      }
       .members {
-        @include widescreen {
-          margin: 30px -30px 0 -30px;
-        }
-        @include desktop {
-          margin: vw(30px) vw(-30px) vw(0) vw(-30px);
-        }
-        @include tablet {
-          margin: vw-tablet(30px) vw-tablet(-30px) vw-tablet(0) vw-tablet(-30px);
-        }
-        @include mobile {
-          margin: vw-mobile(30px) vw-mobile(-30px) vw-mobile(0) vw-mobile(-30px);
+        ul {
+          display: flex;
+          flex-direction: column;
+          @include widescreen {
+            gap: 10px;
+            margin-top: 20px;
+          }
+          @include desktop {
+            gap: vw(10px);
+            margin-top: vw(20px);
+          }
+          @include tablet {
+            gap: 10px; // TODO
+            margin-top: 20px; // TODO
+          }
+          @include mobile {
+            gap: 10px; // TODO
+            margin-top: 20px; // TODO
+          }
         }
         li {
           display: flex;
           align-items: center;
-          @include widescreen {
-            padding: 20px;
-          }
-          @include desktop {
-            padding: vw(20px);
-          }
-          @include tablet {
-            padding: vw-tablet(20px);
-          }
-          @include mobile {
-            padding: vw-mobile(20px);
-          }
           .avatar {
             display: flex;
             align-items: center;

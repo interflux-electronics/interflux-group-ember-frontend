@@ -102,6 +102,7 @@ export default class CompanyModel extends Model {
     const country = this.slug.toLowerCase().replace('interflux-', '');
     // const country = this.country.get('nameEnglish').toLowerCase();
 
-    return `hero-${country}@1200x600.png`;
+    // return `hero-${country}@1200x600.png`;
+    return `hero-${country}@1200x600.webp`;
   }
 }

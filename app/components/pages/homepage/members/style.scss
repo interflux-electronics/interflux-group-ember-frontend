@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vw;
   @include widescreen {
     padding: 100px 0;
   }
@@ -26,6 +27,18 @@
   }
   nav#dots {
     display: flex;
+    @include widescreen {
+      padding: 25px 0;
+    }
+    @include desktop {
+      padding: vw(25px) 0;
+    }
+    @include tablet {
+      padding: 25px 0; // TODO
+    }
+    @include mobile {
+      padding: 25px 0; // TODO
+    }
     button {
       background: none;
       border: 0;
@@ -36,6 +49,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      &:hover,
+      &:focus {
+        .dot {
+          background: $blue-0;
+        }
+      }
       &.active {
         .dot {
           background: $orange-0;
@@ -50,11 +69,77 @@
     }
   }
   nav#buttons {
-    width: 750px;
     height: 0;
     z-index: 1;
     display: flex;
     justify-content: space-between;
+    @include widescreen {
+      width: 780px;
+    }
+    @include desktop {
+      width: vw(780px);
+    }
+    @include tablet {
+      width: vw(780px); // TODO
+    }
+    @include mobile {
+      width: vw(780px); // TODO
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid $grey-1;
+      background: $grey-0;
+      @include widescreen {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+      }
+      @include desktop {
+        width: vw(50px);
+        height: vw(50px);
+        border-radius: vw(4px);
+      }
+      @include tablet {
+        width: 50px; // TODO
+        height: 50px; // TODO
+        border-radius: vw(4px); // TODO
+      }
+      @include mobile {
+        width: 50px; // TODO
+        height: 50px; // TODO
+        border-radius: vw(4px); // TODO
+      }
+      &:hover,
+      &:focus {
+        border-color: $blue-0;
+        cursor: pointer;
+        svg {
+          [fill] {
+            fill: $blue-0;
+          }
+        }
+      }
+      svg {
+        height: auto;
+        @include widescreen {
+          width: 11px;
+        }
+        @include desktop {
+          width: vw(11px);
+        }
+        @include tablet {
+          width: 11px; // TODO
+        }
+        @include mobile {
+          width: 11px; // TODO
+        }
+        [fill] {
+          fill: $grey-4;
+        }
+      }
+    }
   }
   #slides {
     display: flex;
@@ -65,5 +150,8 @@
       position: absolute;
       transition: left 2200ms $easeOutExpo;
     }
+  }
+  img.footer {
+    margin-top: 30px;
   }
 }

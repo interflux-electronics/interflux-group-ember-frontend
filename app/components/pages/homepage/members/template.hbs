@@ -11,19 +11,16 @@
   </nav>
 
   <nav id='buttons' aria-label='buttons'>
-    <Button
-      @icon='chevron-left'
-      @theme='large square secondary grey-border thick'
-      @onClick={{this.prevCompany}}
-    />
-    <Button
-      @icon='chevron-right'
-      @theme='large square secondary grey-border thick'
-      @onClick={{this.nextCompany}}
-    />
+    <button onclick={{this.prevCompany}}>
+      <Svg::ChevronLeft />
+    </button>
+
+    <button onclick={{this.nextCompany}}>
+      <Svg::ChevronRight />
+    </button>
   </nav>
 
-  <div id='slides'>
+  <div id='slides' {{did-insert this.onInsert}}>
     {{#if this.companies}}
       <ul>
         {{#each this.companies as |company|}}
@@ -40,5 +37,6 @@
     alt='Interflux symbol'
     width='100'
     height='70'
+    class='footer'
   />
 </section>
