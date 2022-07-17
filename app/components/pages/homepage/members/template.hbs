@@ -13,16 +13,14 @@
   <nav id='buttons' aria-label='buttons'>
     <Button
       @icon='chevron-left'
-      @theme='square'
+      @theme='large square secondary grey-border thick'
       @onClick={{this.prevCompany}}
     />
     <Button
-      @icon='chevron-left'
-      @theme='square'
+      @icon='chevron-right'
+      @theme='large square secondary grey-border thick'
       @onClick={{this.nextCompany}}
     />
-    <button onclick={{this.prevCompany}} type='button'>Prev</button>
-    <button onclick={{this.nextCompany}} type='button'>Next</button>
   </nav>
 
   <div id='slides'>

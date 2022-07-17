@@ -1,14 +1,14 @@
 <section id='locations'>
-  <div id='mapbox' {{did-insert this.onInsertMap}}></div>
+  <div id='mapbox' {{did-insert this.onInsert}}></div>
 
   {{! Markers are rendered here first, but soon after appended to Mapbox. }}
   <div id='markers'>
-    {{#each this.companies as |c|}}
-      <div id='marker-for-{{c.slug}}' class='marker'>
+    {{#each @companies as |company|}}
+      <div id='marker-for-{{company.slug}}' class='marker'>
         <Svg::Marker />
       </div>
 
-      <div id='shadow-for-{{c.slug}}' class='shadow'>
+      <div id='shadow-for-{{company.slug}}' class='shadow'>
         <Svg::MarkerShadow />
       </div>
     {{/each}}
@@ -23,5 +23,4 @@
       esse cillum dolore.</p>
     <Waypoint @onFirstView={{this.onFirstView}} />
   </div>
-
 </section>

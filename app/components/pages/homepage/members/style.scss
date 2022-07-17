@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
   @include widescreen {
     padding: 100px 0;
   }
@@ -50,8 +49,16 @@
       }
     }
   }
+  nav#buttons {
+    width: 750px;
+    height: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+  }
   #slides {
     display: flex;
+    min-height: 300px;
     > ul {
       display: flex;
       left: 0;

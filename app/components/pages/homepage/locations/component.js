@@ -2,74 +2,54 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-// import ENV from 'interflux-group/config/environment';
+import ENV from 'interflux-group/config/environment';
 
 export default class PagesHomepageLocationsComponent extends Component {
   @service store;
   @service window;
 
   @tracked map;
-  @tracked companies;
+  @tracked inView = false;
+
+  options = {
+    accessToken: ENV.mapboxAccessToken,
+    container: 'mapbox',
+    style: 'mapbox://styles/jw-floatplane-dev/ck8mcsfr50uwe1iohs6xv6n0d',
+    center: { lon: 15, lat: 30 },
+    zoom: 1.5,
+    boxZoom: false,
+    cooperativeGestures: false,
+    doubleClickZoom: false,
+    dragPan: false,
+    dragRotate: false,
+    pitchWithRotate: false,
+    scrollZoom: false,
+    touchPitch: false,
+    touchZoomRotate: false
+  };
 
   @action
-  onInsertMap() {
-    this.waitForMapbox();
-    // this.loadCompanies();
-  }
-
-  async waitForMapbox() {
-    let ready = false;
-
-    while (!ready) {
-      if (window.mapboxgl) {
-        ready = true;
-        this.renderMap();
-        this.addMarkers();
-      }
+  async onInsert() {
+    // Wait for Mapbox JS to be parsed
+    while (!window.mapboxgl) {
       await this.window.delay(100);
     }
-  }
 
-  async renderMap() {
-    const map = new window.mapboxgl.Map({
-      accessToken:
-        'pk.eyJ1IjoianctZmxvYXRwbGFuZS1kZXYiLCJhIjoiY2s4bW02N3UyMG93MTNycGduNzJqOGt6OCJ9.PHUKAn3CMmN73tmJXpa0ug',
-      container: 'mapbox',
-      style: 'mapbox://styles/jw-floatplane-dev/ck8mcsfr50uwe1iohs6xv6n0d',
-      center: { lon: 15, lat: 30 },
-      zoom: 1.5,
-      boxZoom: false,
-      cooperativeGestures: false,
-      doubleClickZoom: false,
-      dragPan: false,
-      dragRotate: false,
-      pitchWithRotate: false,
-      scrollZoom: false,
-      touchPitch: false,
-      touchZoomRotate: false
+    // Render the map
+    this.map = new window.mapboxgl.Map(this.options);
+
+    // Wait for the map to be loaded
+    this.map.on('load', () => {
+      this.showMarkersOnceInView();
     });
-
-    this.map = map;
   }
 
-  // async loadCompanies() {
-  //   if (ENV.isTest) {
-  //     return;
-  //   }
-  //   this.companies = await this.store.query('company', {
-  //     filter: { businessName: '~*Interflux' }
-  //   });
-  //   // Wait for the markers to render in the DOM.
-  //   await this.window.delay(1);
-  //   this.addMarkers();
-  // }
-
-  async addMarkers() {
-    const ready = this.map && this.companies && this.inView;
-    if (!ready) {
-      return;
+  async showMarkersOnceInView() {
+    while (!this.inView) {
+      await this.window.delay(100);
     }
-    this.companies.forEach((company, i) => {
+
+    this.args.companies.forEach((company, i) => {
       this.addMarker(company, i * 100);
     });
   }
@@ -89,10 +69,7 @@ export default class PagesHomepageLocationsComponent extends Component {
       .addTo(this.map);
   }
 
-  @tracked inView = false;
-
   @action onFirstView() {
     this.inView = true;
-    this.addMarkers();
   }
 }

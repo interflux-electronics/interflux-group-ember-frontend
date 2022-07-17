@@ -3,13 +3,13 @@ import Service from '@ember/service';
 export default class WindowService extends Service {
   delay(ms) {
     if (this.isFastBoot) {
-      return new Promise((approve) => {
-        approve();
+      return new Promise((resolve) => {
+        resolve();
       });
     }
 
-    return new Promise((approve) => {
-      window.setTimeout(approve, ms);
+    return new Promise((resolve) => {
+      window.setTimeout(resolve, ms);
     });
   }
 }

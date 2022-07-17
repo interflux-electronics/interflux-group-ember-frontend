@@ -17,8 +17,14 @@
 @import 'normalise/cross-browser';
 @import 'normalise/cross-project';
 
-// Components
+// Reusable components
+@import 'app/components/button/style';
+@import 'app/components/section/style';
+@import 'app/components/load-spinner/style';
+
+// Bespoke components
 @import 'app/components/pages/homepage/style';
+@import 'app/components/pages/homepage/loading/style';
 @import 'app/components/pages/homepage/hero/style';
 @import 'app/components/pages/homepage/about-us/style';
 @import 'app/components/pages/homepage/activities/style';
@@ -27,5 +33,4 @@
 @import 'app/components/pages/homepage/members/style';
 @import 'app/components/pages/homepage/members/slide/style';
 @import 'app/components/pages/under-construction/style';
-@import 'app/components/section/style';
 @import 'app/components/left-nav/style';

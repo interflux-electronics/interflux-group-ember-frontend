@@ -90,6 +90,36 @@
         }
       }
     }
+
+    &.square {
+      padding: 0;
+      @include widescreen {
+        width: 50px;
+        height: 50px;
+      }
+      @include desktop {
+        width: vw(50px);
+        height: vw(50px);
+      }
+      @include tablet {
+        width: vw-tablet(50px);
+        height: vw-tablet(50px);
+      }
+      @include mobile {
+        width: vw-mobile(50px);
+        height: vw-mobile(50px);
+      }
+      &.has-icon {
+        .icon {
+          width: 60%;
+          height: 60%;
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
   }
 
   &.medium {
@@ -399,6 +429,10 @@
       &:focus {
         box-shadow: 0 0 0 1px $orange-1;
       }
+    }
+
+    &.thick {
+      border-width: 2px;
     }
   }
 
