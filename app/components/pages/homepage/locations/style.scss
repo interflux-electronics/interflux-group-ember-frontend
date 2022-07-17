@@ -17,7 +17,6 @@
     transform: scale(1) translateY(50%);
   }
 }
-
 #home #locations {
   background: $blue-4;
   position: relative;
@@ -26,9 +25,11 @@
     z-index: 1;
     @include widescreen {
       height: 60vw;
+      max-height: 900px;
     }
     @include desktop {
       height: 60vw;
+      max-height: vw(900px);
     }
     @include tablet {
       // TODO
@@ -93,16 +94,14 @@
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
-    @include widescreen {
-      left: 22vw;
+    left: 50%;
+    @media (min-width: 1901px) {
+      transform: translateX(-860px);
     }
-    @include desktop {
-      left: 22vw;
+    @media (max-width: 1900px) {
+      transform: translateX(-360px);
     }
-    @include tablet {
-    }
-    @include mobile {
-    }
+    // TODO
     h2,
     p {
       color: white;
@@ -149,6 +148,25 @@
       &:first-child {
         margin-top: 0;
       }
+    }
+  }
+  img#logo {
+    position: absolute;
+    height: auto;
+    z-index: 1;
+    @include widescreen {
+      left: 50px;
+      top: 50px;
+      width: 270px;
+    }
+    @include desktop {
+      left: vw(50px);
+      top: vw(50px);
+      width: vw(270px);
+    }
+    @include tablet {
+    }
+    @include mobile {
     }
   }
 }
