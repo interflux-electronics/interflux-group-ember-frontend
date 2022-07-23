@@ -12,7 +12,7 @@ module('Integration | Component | pages/homepage/locations', function (hooks) {
     const headings = this.element.querySelectorAll('h2');
     const expected = [
       'Coordinated by 14 companies across the world',
-      'Servicing 89+ countries'
+      'Close to all the action'
     ];
 
     assert.strictEqual(headings.length, 2);

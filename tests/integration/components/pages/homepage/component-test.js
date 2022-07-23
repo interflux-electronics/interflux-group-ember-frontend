@@ -12,6 +12,8 @@ module('Integration | Component | pages/homepage', function (hooks) {
     assert.dom('h1').exists();
     assert
       .dom('h1')
-      .hasText('Chemistry, machines and know-how for the electonics industry');
+      .hasText(
+        'Chemistry, machines and know-how for electronics manufacturers'
+      );
   });
 });
