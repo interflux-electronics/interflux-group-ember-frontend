@@ -1,7 +1,13 @@
 #home #members .slide {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+  &.active {
+    .hero {
+      button {
+        border-radius: 4px 4px 0 0;
+        width: 600px;
+        height: 300px;
+      }
+    }
+  }
   .white-pane {
     background: white;
     box-shadow: 0 4px 14px rgba(black, 0.15);
@@ -18,160 +24,152 @@
     @include mobile {
       // TODO
     }
-    .hero {
-      width: 600px;
-      height: 300px;
-      display: flex;
-      justify-content: center;
+  }
+  .hero {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      display: grid;
+      grid-template-areas: 'center';
+      grid-template-columns: auto;
+      grid-template-rows: minmax(0, 1fr);
       align-items: center;
-      position: relative;
+      justify-items: center;
+      padding: 0;
+      outline: 0;
+      border: 0;
+      cursor: pointer;
+      background: none;
       overflow: hidden;
-      @include widescreen {
-        border-radius: 5px 5px 0 0;
-      }
-      @include desktop {
-        border-radius: vw(5px) vw(5px) 0 0;
-      }
-      @include tablet {
-        border-radius: 5px 5px 0 0; // TODO
-      }
-      @include mobile {
-        border-radius: 5px 5px 0 0; // TODO
-      }
-      > img {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
+      transition: all 1000ms $easeOutExpo;
+      width: 300px;
+      height: 108px;
       .logo {
-        h3 {
-          position: relative;
-          z-index: 1;
-          background-color: rgba($blue-4, 0.85);
-          border-radius: 4px 4px 0 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          @include widescreen {
-            width: 300px;
-            height: 108px;
-          }
-          @include desktop {
-            width: vw(300px);
-            height: vw(108px);
-          }
-          @include tablet {
-          }
-          @include mobile {
-          }
-        }
+        grid-area: center;
+        background-color: rgba($blue-4, 0.85);
+        width: 300px;
+        height: 108px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img {
           height: auto;
           width: 89%;
         }
       }
-    }
-
-    .content {
-      @include widescreen {
-        padding: 65px;
-      }
-      @include desktop {
-        padding: vw(65px);
-      }
-      @include tablet {
-        // TODO
-      }
-      @include mobile {
-        // TODO
-      }
-      h4 + p {
-        margin-top: 16px;
-      }
-      p + h4 {
-        margin-top: 40px;
-      }
-      .members {
-        ul {
-          display: flex;
-          flex-direction: column;
-          @include widescreen {
-            gap: 10px;
-            margin-top: 20px;
-          }
-          @include desktop {
-            gap: vw(10px);
-            margin-top: vw(20px);
-          }
-          @include tablet {
-            gap: 10px; // TODO
-            margin-top: 20px; // TODO
-          }
-          @include mobile {
-            gap: 10px; // TODO
-            margin-top: 20px; // TODO
-          }
+      .bg {
+        grid-area: center;
+        img {
+          width: 100%;
+          height: auto;
         }
-        li {
+      }
+
+      img {
+        height: auto;
+        width: 89%;
+      }
+    }
+  }
+  .content {
+    @include widescreen {
+      padding: 65px;
+    }
+    @include desktop {
+      padding: vw(65px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      // TODO
+    }
+    h4 + p {
+      margin-top: 16px;
+    }
+    p + h4 {
+      margin-top: 40px;
+    }
+    .members {
+      ul {
+        display: flex;
+        flex-direction: column;
+        @include widescreen {
+          gap: 10px;
+          margin-top: 20px;
+        }
+        @include desktop {
+          gap: vw(10px);
+          margin-top: vw(20px);
+        }
+        @include tablet {
+          gap: 10px; // TODO
+          margin-top: 20px; // TODO
+        }
+        @include mobile {
+          gap: 10px; // TODO
+          margin-top: 20px; // TODO
+        }
+      }
+      li {
+        display: flex;
+        align-items: center;
+        .avatar {
           display: flex;
           align-items: center;
-          .avatar {
-            display: flex;
-            align-items: center;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
+          border-radius: 50%;
+          overflow: hidden;
+          flex-shrink: 0;
+          @include widescreen {
+            width: 72px;
+            height: 72px;
+            margin-right: 20px;
+          }
+          @include desktop {
+            width: vw(72px);
+            height: vw(72px);
+            margin-right: vw(20px);
+          }
+          @include tablet {
+            width: vw-tablet(72px);
+            height: vw-tablet(72px);
+            margin-right: vw-tablet(20px);
+          }
+          @include mobile {
+            width: vw-mobile(72px);
+            height: vw-mobile(72px);
+            margin-right: vw-mobile(20px);
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .details {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          h3 {
+            font-family: $bold;
+            color: $grey-7;
+            line-height: 180%;
             @include widescreen {
-              width: 72px;
-              height: 72px;
-              margin-right: 20px;
+              font-size: 16px;
             }
             @include desktop {
-              width: vw(72px);
-              height: vw(72px);
-              margin-right: vw(20px);
+              font-size: vw(16px);
             }
             @include tablet {
-              width: vw-tablet(72px);
-              height: vw-tablet(72px);
-              margin-right: vw-tablet(20px);
+              font-size: vw-tablet(16px);
             }
             @include mobile {
-              width: vw-mobile(72px);
-              height: vw-mobile(72px);
-              margin-right: vw-mobile(20px);
-            }
-            img {
-              width: 100%;
-              height: 100%;
+              font-size: vw-mobile(16px);
             }
           }
-          .details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            h3 {
-              font-family: $bold;
-              color: $grey-7;
-              line-height: 180%;
-              @include widescreen {
-                font-size: 16px;
-              }
-              @include desktop {
-                font-size: vw(16px);
-              }
-              @include tablet {
-                font-size: vw-tablet(16px);
-              }
-              @include mobile {
-                font-size: vw-mobile(16px);
-              }
-            }
-            p + p {
-              margin-top: 0;
-            }
+          p + p {
+            margin-top: 0;
           }
         }
       }

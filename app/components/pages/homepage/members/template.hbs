@@ -1,16 +1,16 @@
 <section id='members'>
   <h2 class='h3'>Members</h2>
-  <nav id='dots' aria-label='slides'>
+  <nav id='dots' aria-label='member navigation'>
     {{#if this.companies}}
-      {{#each this.companies as |company position|}}
-        <button onclick={{fn this.goTo position}} type='button'>
+      {{#each this.companies as |company i|}}
+        <button onclick={{fn this.showCompany i}} type='button'>
           <div class='dot'></div>
         </button>
       {{/each}}
     {{/if}}
   </nav>
 
-  <nav id='buttons' aria-label='buttons'>
+  <nav id='arrows' aria-hidden='true'>
     <button type='button' onclick={{this.prevCompany}}>
       <Svg::ChevronLeft />
     </button>
@@ -21,16 +21,52 @@
   </nav>
 
   <div id='slides' {{did-insert this.onInsert}}>
-    {{#if this.companies}}
-      <ul>
-        {{#each this.companies as |company|}}
-          <Pages::Homepage::Members::Slide @company={{company}} />
-        {{/each}}
-      </ul>
-    {{else}}
-      <p>Loading</p>
-    {{/if}}
+    {{#each this.companies as |company i|}}
+      <Pages::Homepage::Members::Slide
+        @company={{company}}
+        @shownCompany={{this.shownCompany}}
+        @showCompany={{this.showCompany}}
+        @position={{i}}
+      />
+    {{/each}}
   </div>
+
+  <!-- <nav id='logos' aria-hidden='true'>
+    {{#each this.companies as |company i|}}
+      <button
+        type='button'
+        onclick={{fn this.showCompany i}}
+        type='button'
+        class={{if (eq company.id this.shownCompany) 'large' 'small'}}
+      >
+        <div class='hero'>
+          <img
+            class='hero'
+            src='{{cdn}}/images/group/{{company.heroImage}}'
+            aria-hidden='true'
+            alt=''
+          />
+        </div>
+
+        <div class='logo'>
+          <img
+            src='{{cdn}}/images/logos/{{company.heroLogo}}-logo-white.svg'
+            alt={{company.businessName}}
+          />
+        </div>
+      </button>
+    {{/each}}
+  </nav> -->
+
+  <!-- <div id='slides' {{did-insert this.onInsert}}>
+    <AnimatedContainer>
+      {{#each this.companies as |company|}}
+        {{#animated-if (eq company.id this.shownCompany) use=this.transition}}
+          <Pages::Homepage::Members::Slide @company={{company}} />
+        {{/animated-if}}
+      {{/each}}
+    </AnimatedContainer>
+  </div> -->
 
   <img
     src='{{cdn}}/images/group/interflux-symbol-grey.svg'

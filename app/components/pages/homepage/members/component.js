@@ -1,8 +1,16 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { easeOut, easeIn } from 'ember-animated/easings/cosine';
+import { fadeOut, fadeIn } from 'ember-animated/motions/opacity';
+import move from 'ember-animated/motions/move';
 
 export default class PagesHomepageMembersComponent extends Component {
-  currentSlide = 0;
+  @tracked shownIndex = 0;
+
+  get shownCompany() {
+    return this.companies ? this.companies.mapBy('id')[this.shownIndex] : null;
+  }
 
   get companies() {
     if (this.args.companies) {
@@ -13,37 +21,48 @@ export default class PagesHomepageMembersComponent extends Component {
   }
 
   @action
+  onInsert() {
+    if (this.companies) {
+      this.showCompany(0);
+    }
+  }
+
+  @action
+  showCompany(i) {
+    const n = this.companies.length;
+    const ii = i < 0 ? 0 : i < n ? i : n - 1;
+    const id = this.companies.mapBy('id')[ii];
+    console.log('showCompany', i, ii, id);
+    this.shownIndex = ii;
+  }
+
+  @action
   prevCompany() {
-    this.goTo(this.currentSlide - 1);
+    this.showCompany(this.shownIndex - 1);
   }
 
   @action
   nextCompany() {
-    this.goTo(this.currentSlide + 1);
+    this.showCompany(this.shownIndex + 1);
   }
 
-  @action
-  goTo(i) {
-    console.log('goTo', i);
-    const slides = document.querySelector('#slides');
-    const ul = document.querySelector('#slides ul');
-    const slide = document.querySelector(`#slides .slide:nth-child(${i + 1})`);
-    const dot = document.querySelector(`#dots button:nth-child(${i + 1})`);
-    const active = document.querySelector(`#dots button.active`);
-    console.log(`${slide.clientHeight}px`);
-    slides.style = `height: ${slide.clientHeight}px`;
-    ul.style.left = `${i * -100}vw`;
-    dot.classList.add('active');
-    if (active) {
-      active.classList.remove('active');
+  // transition: function * ({ insertedSprites, keptSprites, removedSprites }) {
+  // eslint-disable-next-line require-yield
+  *transition({ insertedSprites, keptSprites, removedSprites }) {
+    for (let sprite of insertedSprites) {
+      sprite.startAtPixel({ x: window.innerWidth - 600 });
+      move(sprite, { easing: easeOut });
+      fadeIn(sprite);
     }
-    this.currentSlide = i;
-  }
 
-  @action
-  onInsert() {
-    if (this.companies) {
-      this.goTo(0);
+    for (let sprite of keptSprites) {
+      move(sprite);
+    }
+
+    for (let sprite of removedSprites) {
+      sprite.endAtPixel({ x: 0 });
+      move(sprite, { easing: easeIn });
+      fadeOut(sprite);
     }
   }
 }
