@@ -11,7 +11,7 @@ module(
     test('it renders', async function (assert) {
       await render(hbs`<Pages::Homepage::Members::Slide />`);
 
-      assert.dom('li.slide').exists();
+      assert.dom('.slide').exists();
     });
   }
 );
