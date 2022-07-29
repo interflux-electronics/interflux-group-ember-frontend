@@ -90,12 +90,7 @@ export default class CompanyModel extends Model {
 
   get heroLogo() {
     const { slug } = this;
-    const logo = slug
-      .replace('-Bejing', '')
-      .replace('-Suzhou', '')
-      .replace('-Shanghai', '')
-      .replace('-Shenzhen', '')
-      .toLowerCase();
+    const logo = slug.replace('-China-', '-').toLowerCase();
 
     return logo;
   }
