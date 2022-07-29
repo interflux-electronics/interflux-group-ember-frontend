@@ -1,4 +1,7 @@
 aside {
+  position: relative;
+  z-index: 2;
+  display: none;
   ul {
     position: fixed;
     top: 0;
@@ -9,17 +12,11 @@ aside {
     justify-content: center;
     gap: 20px;
     a {
-      color: $grey-7;
       line-height: 30px;
       padding: 0 20px;
-    }
-  }
-}
-
-section {
-  > aside {
-    ul {
-      a {
+      color: $grey-5;
+      transition: color 300ms $easeOutExpo;
+      &.white {
         color: white;
       }
     }

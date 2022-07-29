@@ -156,10 +156,10 @@
       }
       h2 {
         @include widescreen {
-          margin: 20px 0 15px;
+          margin: 16px 0 15px;
         }
         @include desktop {
-          margin: vw(20px) 0 vw(15px);
+          margin: vw(16px) 0 vw(15px);
         }
         @include tablet {
           // TODO
