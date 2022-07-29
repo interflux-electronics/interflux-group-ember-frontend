@@ -1,4 +1,5 @@
 #home #members .slide {
+  position: relative;
   &.active {
     .hero {
       button {
@@ -7,29 +8,22 @@
         height: 300px;
       }
     }
-  }
-  .white-pane {
-    background: white;
-    box-shadow: 0 4px 14px rgba(black, 0.15);
-    border-radius: 4px;
-    @include widescreen {
+    .content {
+      opacity: 1;
       width: 600px;
-    }
-    @include desktop {
-      width: vw(600px);
-    }
-    @include tablet {
-      // TODO
-    }
-    @include mobile {
-      // TODO
+      background: white;
+      box-shadow: 0 4px 14px rgba(black, 0.15);
     }
   }
   .hero {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
     button {
       display: grid;
       grid-template-areas: 'center';
@@ -43,7 +37,7 @@
       cursor: pointer;
       background: none;
       overflow: hidden;
-      transition: all 1000ms $easeOutExpo;
+      transition: all 1500ms $easeOutExpo;
       width: 300px;
       height: 108px;
       .logo {
@@ -74,17 +68,36 @@
     }
   }
   .content {
-    @include widescreen {
-      padding: 65px;
+    z-index: 1;
+    position: relative;
+    border-radius: 4px;
+    transition: all 1500ms $easeOutExpo;
+    width: 300px;
+    &.show {
+      opacity: 1;
     }
-    @include desktop {
-      padding: vw(65px);
+    &.hide {
+      opacity: 0;
     }
-    @include tablet {
-      // TODO
+    .space {
+      height: 300px;
     }
-    @include mobile {
-      // TODO
+    .inner {
+      width: 600px;
+      box-sizing: border-box;
+      transition: all 1500ms $easeOutExpo;
+      @include widescreen {
+        padding: 65px;
+      }
+      @include desktop {
+        padding: vw(65px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        // TODO
+      }
     }
     h4 + p {
       margin-top: 16px;

@@ -1,45 +1,30 @@
-<div class='slide {{if (eq @company.id @shownCompany) "active"}}'>
-  <div class='white-pane'>
-    <div class='hero'>
-      <button
-        type='button'
-        onclick={{fn @showCompany @position}}
-        class={{if (eq @company.id @shownCompany) 'large' 'small'}}
-      >
-        <div class='bg'>
-          <img
-            src='{{cdn}}/images/group/{{@company.heroImage}}'
-            aria-hidden='true'
-            alt=''
-          />
-        </div>
-
-        <div class='logo'>
-          <img
-            src='{{cdn}}/images/logos/{{@company.heroLogo}}-logo-white.svg'
-            alt={{@company.businessName}}
-          />
-        </div>
-      </button>
-    </div>
-
-    <!-- <div class='hero'>
-      <div class='logo'>
-        <h3 aria-label={{@company.businessName}}>
-          <img
-            src='{{cdn}}/images/logos/{{@company.heroLogo}}-logo-white.svg'
-            alt={{@company.businessName}}
-          />
-        </h3>
+<div class='slide {{if @showSlide "active"}}'>
+  <div class='hero'>
+    <button
+      type='button'
+      onclick={{@onHeroClick}}
+      class={{if @showSlide 'large' 'small'}}
+    >
+      <div class='bg'>
+        <img
+          src='{{cdn}}/images/group/{{@company.heroImage}}'
+          aria-hidden='true'
+          alt=''
+        />
       </div>
-      <img
-        src='{{cdn}}/images/group/{{@company.heroImage}}'
-        aria-hidden='true'
-        alt=''
-      />
-    </div> -->
 
-    <div class='content'>
+      <div class='logo'>
+        <img
+          src='{{cdn}}/images/logos/{{@company.heroLogo}}-logo-white.svg'
+          alt={{@company.businessName}}
+        />
+      </div>
+    </button>
+  </div>
+
+  <div class='content {{if @showContent "show" "hide"}}'>
+    <div class='space'></div>
+    <div class='inner'>
       {{#if @company.description}}
         <h4 class='h3'>Core Activity</h4>
         <p>{{@company.description}}</p>
@@ -71,7 +56,6 @@
             {{/each}}
           </ul>
         </div>
-
       {{/if}}
     </div>
   </div>

@@ -1,5 +1,6 @@
 <section id='members'>
   <h2 class='h3'>Members</h2>
+
   <nav id='dots' aria-label='member navigation'>
     {{#if this.companies}}
       {{#each this.companies as |company i|}}
@@ -20,53 +21,18 @@
     </button>
   </nav>
 
-  <div id='slides' {{did-insert this.onInsert}}>
-    {{#each this.companies as |company i|}}
-      <Pages::Homepage::Members::Slide
-        @company={{company}}
-        @shownCompany={{this.shownCompany}}
-        @showCompany={{this.showCompany}}
-        @position={{i}}
-      />
-    {{/each}}
-  </div>
-
-  <!-- <nav id='logos' aria-hidden='true'>
-    {{#each this.companies as |company i|}}
-      <button
-        type='button'
-        onclick={{fn this.showCompany i}}
-        type='button'
-        class={{if (eq company.id this.shownCompany) 'large' 'small'}}
-      >
-        <div class='hero'>
-          <img
-            class='hero'
-            src='{{cdn}}/images/group/{{company.heroImage}}'
-            aria-hidden='true'
-            alt=''
-          />
-        </div>
-
-        <div class='logo'>
-          <img
-            src='{{cdn}}/images/logos/{{company.heroLogo}}-logo-white.svg'
-            alt={{company.businessName}}
-          />
-        </div>
-      </button>
-    {{/each}}
-  </nav> -->
-
-  <!-- <div id='slides' {{did-insert this.onInsert}}>
-    <AnimatedContainer>
-      {{#each this.companies as |company|}}
-        {{#animated-if (eq company.id this.shownCompany) use=this.transition}}
-          <Pages::Homepage::Members::Slide @company={{company}} />
-        {{/animated-if}}
+  <div id='slides' style={{this.slidesStyle}} {{did-insert this.onInsert}}>
+    <div id='stage' style={{this.stageStyle}}>
+      {{#each this.companies as |company i|}}
+        <Pages::Homepage::Members::Slide
+          @company={{company}}
+          @showSlide={{eq i this.shownSlide}}
+          @showContent={{eq i this.shownContent}}
+          @onHeroClick={{fn this.showCompany i}}
+        />
       {{/each}}
-    </AnimatedContainer>
-  </div> -->
+    </div>
+  </div>
 
   <img
     src='{{cdn}}/images/group/interflux-symbol-grey.svg'

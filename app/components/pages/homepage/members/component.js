@@ -1,15 +1,18 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { easeOut, easeIn } from 'ember-animated/easings/cosine';
-import { fadeOut, fadeIn } from 'ember-animated/motions/opacity';
-import move from 'ember-animated/motions/move';
+import { htmlSafe } from '@ember/template';
+import { inject as service } from '@ember/service';
 
 export default class PagesHomepageMembersComponent extends Component {
-  @tracked shownIndex = 0;
+  @service window;
+
+  @tracked shownSlide = 0;
+  @tracked shownContent = 0;
+  @tracked slideHeight = 300;
 
   get shownCompany() {
-    return this.companies ? this.companies.mapBy('id')[this.shownIndex] : null;
+    return this.companies ? this.companies.mapBy('id')[this.shownSlide] : null;
   }
 
   get companies() {
@@ -31,38 +34,37 @@ export default class PagesHomepageMembersComponent extends Component {
   showCompany(i) {
     const n = this.companies.length;
     const ii = i < 0 ? 0 : i < n ? i : n - 1;
-    const id = this.companies.mapBy('id')[ii];
-    console.log('showCompany', i, ii, id);
-    this.shownIndex = ii;
+    const height = document.querySelectorAll('#slides .slide')[ii].offsetHeight;
+    this.shownSlide = ii;
+    this.shownContent = null;
+    this.slideHeight = height;
+    this.showContentSoon(ii);
+  }
+
+  async showContentSoon(i) {
+    await this.window.delay(0);
+    if (this.shownSlide === i) {
+      this.shownContent = i;
+    }
   }
 
   @action
   prevCompany() {
-    this.showCompany(this.shownIndex - 1);
+    this.showCompany(this.shownSlide - 1);
   }
 
   @action
   nextCompany() {
-    this.showCompany(this.shownIndex + 1);
+    this.showCompany(this.shownSlide + 1);
   }
 
-  // transition: function * ({ insertedSprites, keptSprites, removedSprites }) {
-  // eslint-disable-next-line require-yield
-  *transition({ insertedSprites, keptSprites, removedSprites }) {
-    for (let sprite of insertedSprites) {
-      sprite.startAtPixel({ x: window.innerWidth - 600 });
-      move(sprite, { easing: easeOut });
-      fadeIn(sprite);
-    }
+  get slidesStyle() {
+    return htmlSafe(`height: ${this.slideHeight}px`);
+  }
 
-    for (let sprite of keptSprites) {
-      move(sprite);
-    }
+  get stageStyle() {
+    const offset = this.shownSlide * -1 * 400; // 300px logo + 100px gap
 
-    for (let sprite of removedSprites) {
-      sprite.endAtPixel({ x: 0 });
-      move(sprite, { easing: easeIn });
-      fadeOut(sprite);
-    }
+    return htmlSafe(`left: ${offset}px`);
   }
 }

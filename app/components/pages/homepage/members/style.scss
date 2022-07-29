@@ -1,6 +1,5 @@
 #home #members {
   background-color: $grey-0;
-  // background-image: url('#{$cdn}/images/group/circuit-board-pattern.svg');
   background: radial-gradient(white, $grey-0);
   background-repeat: no-repeat;
   background-size: auto;
@@ -10,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
   @include widescreen {
     padding: 100px 0;
   }
@@ -28,16 +28,16 @@
   nav#dots {
     display: flex;
     @include widescreen {
-      padding: 25px 0;
+      padding: 25px 0 30px;
     }
     @include desktop {
-      padding: vw(25px) 0;
+      padding: vw(25px) 0 30px;
     }
     @include tablet {
-      padding: 25px 0; // TODO
+      padding: 25px 0 30px; // TODO
     }
     @include mobile {
-      padding: 25px 0; // TODO
+      padding: 25px 0 30px; // TODO
     }
     button {
       background: none;
@@ -70,9 +70,10 @@
   }
   nav#arrows {
     height: 0;
-    z-index: 1;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
+    position: relative;
     @include widescreen {
       width: 780px;
     }
@@ -141,66 +142,20 @@
       }
     }
   }
-  // nav#logos {
-  //   display: flex;
-  //   gap: 100px;
-  //   height: 300px;
-  //   align-items: center;
-  //   button {
-  //     display: grid;
-  //     grid-template-areas: 'center';
-  //     grid-template-columns: auto;
-  //     grid-template-rows: minmax(0, 1fr);
-  //     align-items: center;
-  //     justify-items: center;
-  //     padding: 0;
-  //     outline: 0;
-  //     border: 0;
-  //     cursor: pointer;
-  //     background: none;
-  //     overflow: hidden;
-  //     transition: all 1000ms $easeOutExpo;
-  //     &.small {
-  //       width: 300px;
-  //       height: 108px;
-  //     }
-  //     &.large {
-  //       border-radius: 4px 4px 0 0;
-  //       width: 600px;
-  //       height: 300px;
-  //     }
-  //     .logo {
-  //       grid-area: center;
-  //       background-color: rgba($blue-4, 0.85);
-  //       width: 300px;
-  //       height: 108px;
-  //       display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-  //       img {
-  //         height: auto;
-  //         width: 89%;
-  //       }
-  //     }
-  //     .hero {
-  //       grid-area: center;
-  //       img {
-  //         width: 100%;
-  //         height: auto;
-  //       }
-  //     }
-  //
-  //     img {
-  //       height: auto;
-  //       width: 89%;
-  //     }
-  //   }
-  // }
   #slides {
-    display: flex;
-    gap: 200px;
+    position: relative;
+    min-height: 300px;
+    width: 600px;
+    transition: all 1500ms $easeOutExpo;
+    #stage {
+      position: absolute;
+      transition: all 1500ms $easeOutExpo;
+      display: flex;
+      gap: 100px;
+      align-items: flex-start;
+    }
   }
   img.footer {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 }
