@@ -14,6 +14,8 @@ export default class CompanyModel extends Model {
   @attr('string') latitude;
   @attr('string') longitude;
   @attr('string') description;
+  @attr('string') groupContentTop;
+  @attr('string') groupContentBottom;
 
   @attr('number') order;
   @attr('boolean') public;
@@ -36,6 +38,10 @@ export default class CompanyModel extends Model {
     }
 
     return publicMembers.sortBy('rankAmongMembers');
+  }
+
+  get markets() {
+    return this.companyMarkets.sortBy('rankAmongMembers').mapBy('country');
   }
 
   get rank() {
@@ -101,5 +107,15 @@ export default class CompanyModel extends Model {
 
     // return `hero-${country}@1200x600.png`;
     return `hero-${country}@1200x600.webp`;
+  }
+
+  get showMarkets() {
+    return !['Interflux Electronics', 'Interflux China, Beijing'].includes(
+      this.businessName
+    );
+  }
+
+  get otherPeopleCount() {
+    return 20;
   }
 }

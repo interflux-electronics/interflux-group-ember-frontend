@@ -1,62 +1,127 @@
-<div class='slide {{if @showSlide "active"}}'>
-  <div class='hero'>
-    <button
-      type='button'
-      onclick={{@onHeroClick}}
-      class={{if @showSlide 'large' 'small'}}
-    >
-      <div class='bg'>
-        <img
-          src='{{cdn}}/images/group/{{@company.heroImage}}'
-          aria-hidden='true'
-          alt=''
-        />
-      </div>
+{{#with @company as |c|}}
+  <div class='slide {{if @showSlide "active"}}'>
+    <div class='hero'>
+      <button
+        type='button'
+        onclick={{@onHeroClick}}
+        class={{if @showSlide 'large' 'small'}}
+      >
+        <div class='bg'>
+          <img
+            src='{{cdn}}/images/group/{{c.heroImage}}'
+            aria-hidden='true'
+            alt=''
+          />
+        </div>
 
-      <div class='logo'>
-        <img
-          src='{{cdn}}/images/logos/{{@company.heroLogo}}-logo-white.svg'
-          alt={{@company.businessName}}
-        />
-      </div>
-    </button>
-  </div>
+        <div class='logo'>
+          <img
+            src='{{cdn}}/images/logos/{{c.heroLogo}}-logo-white.svg'
+            alt={{c.businessName}}
+          />
+        </div>
+      </button>
+    </div>
 
-  <div class='content {{if @showContent "show" "hide"}}'>
-    <div class='space'></div>
-    <div class='inner'>
-      {{#if @company.description}}
-        <h4 class='h3'>Core Activity</h4>
-        <p>{{@company.description}}</p>
-      {{/if}}
+    <div class='content {{if @showContent "show" "hide"}}'>
+      <div class='space'></div>
+      <div class='inner'>
+        {{#if c.groupContentTop}}
+          {{markdown c.groupContentTop}}
+        {{/if}}
 
-      {{#if @company.members}}
-        <h4 class='h3'>Team</h4>
-        <div class='members'>
-          <ul>
-            {{#each @company.members as |member|}}
+        {{#if c.showMarkets}}
+          <h3>Service area</h3>
+          <ul class='countries'>
+            {{#each c.markets as |country|}}
               <li>
-                <div class='avatar'>
-                  {{#if member.hasAvatar}}
-                    <img
-                      src='{{env "cdnHost"}}{{member.avatarSrc}}'
-                      alt={{member.fullName}}
-                    />
-                  {{else}}
-                    <img
-                      src='{{env "cdnHost"}}/images/public/no-avatar.svg'
-                      aria-hidden='true'
-                      width='27'
-                      height='27'
-                    />
-                  {{/if}}
-                </div>
-                <p>{{member.fullName}}</p>
+                <Flag @country={{country}} />
+                <p>{{country.nameEnglish}}</p>
               </li>
             {{/each}}
           </ul>
+        {{/if}}
+
+        {{#if c.companyMembers}}
+          <h3>Team members</h3>
+          <ul class='people'>
+            {{#each c.companyMembers as |member|}}
+              {{#with member.person as |person|}}
+                <li>
+                  <div class='avatar'>
+                    {{#if member.person.hasAvatar}}
+                      <img
+                        src='{{env "cdnHost"}}{{member.person.avatarSrc}}'
+                        alt={{member.person.fullName}}
+                      />
+                    {{else}}
+                      <img
+                        src='{{env "cdnHost"}}/images/public/no-avatar.svg'
+                        aria-hidden='true'
+                        width='27'
+                        height='27'
+                      />
+                    {{/if}}
+                  </div>
+                  <div class='text'>
+                    <p>
+                      <strong>{{member.person.firstName}}
+                        {{member.person.lastName}}</strong>
+                      <span> {{member.person.chineseName}}</span>
+                    </p>
+                    <p>{{member.title}}</p>
+                  </div>
+                </li>
+              {{/with}}
+            {{/each}}
+          </ul>
+          <p>+ {{c.otherPeopleCount}} more valuable people</p>
+        {{/if}}
+
+        {{#if c.groupContentBottom}}
+          {{markdown c.groupContentBottom}}
+        {{/if}}
+
+        <h3>Address</h3>
+        <p class='p address'>
+          {{#if c.legalName}}
+            <span>{{c.legalName}}</span>
+          {{/if}}
+          {{#if c.address}}
+            <span>{{c.address}}</span>
+          {{/if}}
+          {{#if c.country.nameEnglish}}
+            <span>{{c.country.nameEnglish}}</span>
+          {{/if}}
+        </p>
+        <div class='map'>
+          <div class='mapbox' {{did-insert this.onInsertMap}}></div>
+          <Flag @country={{c.country}} />
+          <div class='markers'>
+            <div id='marker-for-{{c.slug}}' class='marker'>
+              <Svg::Marker />
+            </div>
+            <div id='shadow-for-{{c.slug}}' class='shadow'>
+              <Svg::MarkerShadow />
+            </div>
+          </div>
         </div>
-      {{/if}}
+
+        <h3>Contact us</h3>
+        <p class='contacts'>
+          {{#if c.website}}
+            <Link @url={{c.websiteForRobots}} @label={{c.websiteForHumans}} />
+          {{/if}}
+
+          {{#if c.emailGeneral}}
+            <Link @url='mailto:{{c.emailGeneral}}' @label={{c.emailGeneral}} />
+          {{/if}}
+
+          {{#if c.phone}}
+            <Link @url='tel:{{c.phoneForRobots}}' @label={{c.phoneForHumans}} />
+          {{/if}}
+        </p>
+      </div>
     </div>
   </div>
-</div>
+{{/with}}

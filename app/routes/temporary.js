@@ -22,24 +22,12 @@ export default class TemporaryRoute extends Route {
           include: ['public_members', 'public_members.person', 'country'].join(
             ','
           )
-        })
-      // countries: this.cache.countries || this.store.findAll('country'),
-      // markets: this.cache.markets || this.store.findAll('company-market')
+        }),
+      countries: this.cache.countries || this.store.findAll('country'),
+      markets: this.cache.markets || this.store.findAll('company-market')
 
       // error: new Promise((resolve, reject) => setTimeout(reject, 1 * 1000))
       // delay: new Promise((resolve) => setTimeout(resolve, 3 * 1000))
     });
   }
 }
-
-// async loadCompanies() {
-//   if (ENV.isTest) {
-//     return;
-//   }
-//   this.companies = await this.store.query('company', {
-//     filter: { businessName: '~*Interflux' }
-//   });
-//   // Wait for the markers to render in the DOM.
-//   await this.window.delay(1);
-//   this.addMarkers();
-// }

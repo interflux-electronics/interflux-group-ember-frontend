@@ -5,7 +5,6 @@ import { inject as service } from '@ember/service';
 import ENV from 'interflux-group/config/environment';
 
 export default class PagesHomepageLocationsComponent extends Component {
-  @service store;
   @service window;
 
   @tracked map;

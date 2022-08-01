@@ -99,32 +99,33 @@
         // TODO
       }
     }
-    h4 + p {
-      margin-top: 16px;
+    h3 + p,
+    h3 + ul,
+    p + p {
+      margin-top: 12px;
     }
-    p + h4 {
+    p + h3,
+    ul + h3 {
       margin-top: 40px;
     }
-    .members {
-      ul {
-        display: flex;
-        flex-direction: column;
-        @include widescreen {
-          gap: 10px;
-          margin-top: 20px;
-        }
-        @include desktop {
-          gap: vw(10px);
-          margin-top: vw(20px);
-        }
-        @include tablet {
-          gap: 10px; // TODO
-          margin-top: 20px; // TODO
-        }
-        @include mobile {
-          gap: 10px; // TODO
-          margin-top: 20px; // TODO
-        }
+    ul.people {
+      display: flex;
+      flex-direction: column;
+      @include widescreen {
+        gap: 10px;
+        margin: 14px 0;
+      }
+      @include desktop {
+        gap: vw(10px);
+        margin: 14px 0;
+      }
+      @include tablet {
+        gap: 10px; // TODO
+        margin: 14px 0;
+      }
+      @include mobile {
+        gap: 10px; // TODO
+        margin: 14px 0;
       }
       li {
         display: flex;
@@ -136,53 +137,128 @@
           overflow: hidden;
           flex-shrink: 0;
           @include widescreen {
-            width: 72px;
-            height: 72px;
-            margin-right: 20px;
+            width: 70px;
+            height: 70px;
+            margin-right: 16px;
           }
           @include desktop {
-            width: vw(72px);
-            height: vw(72px);
-            margin-right: vw(20px);
+            width: vw(70px);
+            height: vw(70px);
+            margin-right: vw(16px);
           }
           @include tablet {
-            width: vw-tablet(72px);
-            height: vw-tablet(72px);
-            margin-right: vw-tablet(20px);
+            width: vw-tablet(70px);
+            height: vw-tablet(70px);
+            margin-right: vw-tablet(16px);
           }
           @include mobile {
-            width: vw-mobile(72px);
-            height: vw-mobile(72px);
-            margin-right: vw-mobile(20px);
+            width: vw-mobile(70px);
+            height: vw-mobile(70px);
+            margin-right: vw-mobile(16px);
           }
           img {
             width: 100%;
             height: 100%;
           }
         }
-        .details {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          h3 {
-            font-family: $bold;
-            color: $grey-7;
-            line-height: 180%;
-            @include widescreen {
-              font-size: 16px;
-            }
-            @include desktop {
-              font-size: vw(16px);
-            }
-            @include tablet {
-              font-size: vw-tablet(16px);
-            }
-            @include mobile {
-              font-size: vw-mobile(16px);
-            }
-          }
+        .text {
           p + p {
             margin-top: 0;
+          }
+        }
+      }
+    }
+    ul.countries {
+      display: flex;
+      flex-direction: column;
+      @include widescreen {
+        gap: 8px;
+        margin-top: 16px;
+      }
+      @include desktop {
+        gap: vw(8px);
+        margin-top: vw(16px);
+      }
+      @include tablet {
+        gap: 8px; // TODO
+        margin-top: 16px;
+      }
+      @include mobile {
+        gap: 8px; // TODO
+        margin-top: 16px;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+    }
+    p.address {
+      max-width: 50%;
+    }
+    p.contacts {
+      display: flex;
+      flex-direction: column;
+    }
+    .map {
+      position: relative;
+      margin: 14px 0 40px;
+      .flag {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        outline: 1px solid white;
+        z-index: 1;
+      }
+    }
+    .markers {
+      display: none;
+    }
+    .mapbox {
+      width: 100%;
+      height: 260px;
+      position: relative;
+      z-index: 1;
+    }
+    .mapboxgl-marker {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      @include widescreen {
+        width: 30px;
+        height: 30px;
+      }
+      @include desktop {
+        width: vw(30px);
+        height: vw(30px);
+      }
+      @include tablet {
+        // TODO
+        width: 2vw;
+        height: 2vw;
+      }
+      @include mobile {
+        // TODO
+        width: 2vw;
+        height: 2vw;
+      }
+      &.shadow {
+        z-index: 1;
+        svg {
+          width: 80%;
+          height: auto;
+          animation: scale 1000ms $easeOutExpo;
+          transform: translateY(50%);
+        }
+      }
+      &.marker {
+        z-index: 2;
+        svg {
+          width: 100%;
+          height: auto;
+          animation: drop 1000ms $easeOutExpo;
+          .border {
+            opacity: 0;
           }
         }
       }
