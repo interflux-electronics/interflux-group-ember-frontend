@@ -9,7 +9,20 @@ module(
     setupRenderingTest(hooks);
 
     test('it renders', async function (assert) {
-      await render(hbs`<Pages::Homepage::Members::Slide />`);
+      this.set('company', {
+        id: '123',
+        businessName: 'Interflux Test',
+        country: {
+          get: (key) => {
+            return this[key];
+          },
+          id: 'BE'
+        }
+      });
+
+      await render(
+        hbs`<Pages::Homepage::Members::Slide @company={{this.company}} />`
+      );
 
       assert.dom('.slide').exists();
     });

@@ -1,4 +1,4 @@
-{{#with @company as |c|}}
+{{#let @company as |c|}}
   <div class='slide {{if @showSlide "active"}}'>
     <div class='hero'>
       <button
@@ -46,13 +46,13 @@
           <h3>Team members</h3>
           <ul class='people'>
             {{#each c.companyMembers as |member|}}
-              {{#with member.person as |person|}}
+              {{#let member.person as |person|}}
                 <li>
                   <div class='avatar'>
-                    {{#if member.person.hasAvatar}}
+                    {{#if person.hasAvatar}}
                       <img
-                        src='{{env "cdnHost"}}{{member.person.avatarSrc}}'
-                        alt={{member.person.fullName}}
+                        src='{{env "cdnHost"}}{{person.avatarSrc}}'
+                        alt={{person.fullName}}
                       />
                     {{else}}
                       <img
@@ -65,14 +65,14 @@
                   </div>
                   <div class='text'>
                     <p>
-                      <strong>{{member.person.firstName}}
-                        {{member.person.lastName}}</strong>
-                      <span> {{member.person.chineseName}}</span>
+                      <strong>{{person.firstName}}
+                        {{person.lastName}}</strong>
+                      <span> {{person.chineseName}}</span>
                     </p>
                     <p>{{member.title}}</p>
                   </div>
                 </li>
-              {{/with}}
+              {{/let}}
             {{/each}}
           </ul>
           <p>+ {{c.otherPeopleCount}} more valuable people</p>
@@ -124,4 +124,4 @@
       </div>
     </div>
   </div>
-{{/with}}
+{{/let}}
