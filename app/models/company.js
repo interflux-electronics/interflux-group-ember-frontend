@@ -14,12 +14,14 @@ export default class CompanyModel extends Model {
   @attr('string') latitude;
   @attr('string') longitude;
   @attr('string') description;
-  @attr('string') groupContentTop;
-  @attr('string') groupContentBottom;
-
   @attr('number') order;
   @attr('boolean') public;
   @attr('boolean') isHeadquarter;
+  @attr('boolean') shownOnGroupWebsite;
+  @attr('string') coreActivity;
+  @attr('string') history;
+  @attr('number') rankOnGroupWebsite;
+  @attr('boolean') showMarkets;
 
   @belongsTo('country') country;
 

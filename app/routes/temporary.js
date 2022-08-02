@@ -18,7 +18,8 @@ export default class TemporaryRoute extends Route {
       companies:
         this.cache.companies ||
         this.store.query('company', {
-          filter: { businessName: '~*Interflux' },
+          // filter: { businessName: '~*Interflux' },
+          filter: { shownOnGroupWebsite: 'true' },
           include: ['public_members', 'public_members.person', 'country'].join(
             ','
           )

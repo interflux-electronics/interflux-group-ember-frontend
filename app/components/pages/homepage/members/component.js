@@ -17,24 +17,7 @@ export default class PagesHomepageMembersComponent extends Component {
 
   get companies() {
     if (this.args.companies) {
-      return [
-        'Interflux Electronics',
-        'Interflux Singapore',
-        'Interflux China, Beijing',
-        'Interflux China, Shanghai',
-        'Interflux China, Shenzhen',
-        'Interflux China, Suzhou',
-        'Interflux Sweden',
-        'Interflux Norway',
-        'Interflux Denmark',
-        'Interflux Estonia',
-        'Interflux Poland',
-        'Interflux France',
-        'Interflux Australia',
-        'Interflux Mexico'
-      ].map((name) => {
-        return this.args.companies.findBy('businessName', name);
-      });
+      return this.args.companies.sortBy('rankOnGroupWebsite');
     } else {
       return null;
     }
