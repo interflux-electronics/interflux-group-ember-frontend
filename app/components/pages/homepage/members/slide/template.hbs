@@ -82,33 +82,22 @@
           {{markdown c.groupContentBottom}}
         {{/if}}
 
-        <h3>Address</h3>
-        <p class='p address'>
-          {{#if c.legalName}}
-            <span>{{c.legalName}}</span>
-          {{/if}}
-          {{#if c.address}}
-            <span>{{c.address}}</span>
-          {{/if}}
-          {{#if c.country.nameEnglish}}
-            <span>{{c.country.nameEnglish}}</span>
-          {{/if}}
-        </p>
-        <div class='map'>
-          <div class='mapbox' {{did-insert this.onInsertMap}}></div>
-          <Flag @country={{c.country}} />
-          <div class='markers'>
-            <div id='marker-for-{{c.slug}}' class='marker'>
-              <Svg::Marker />
-            </div>
-            <div id='shadow-for-{{c.slug}}' class='shadow'>
-              <Svg::MarkerShadow />
-            </div>
-          </div>
-        </div>
-
         <h3>Contact us</h3>
         <p class='contacts'>
+          <p class='p address'>
+            {{#if c.legalName}}
+              <span>{{c.legalName}}</span>
+            {{/if}}
+
+            {{#if c.address}}
+              <span>{{c.address}}</span>
+            {{/if}}
+
+            {{#if c.country.nameEnglish}}
+              <span>{{c.country.nameEnglish}}</span>
+            {{/if}}
+          </p>
+
           {{#if c.website}}
             <Link @url={{c.websiteForRobots}} @label={{c.websiteForHumans}} />
           {{/if}}

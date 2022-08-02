@@ -1,14 +1,4 @@
 #home #about-us {
-  &.hide {
-    .text {
-      opacity: 0;
-      transform: translateY(-20vh);
-    }
-    img {
-      opacity: 0;
-      transform: translateY(20vh);
-    }
-  }
   .text,
   img {
     transition: all 2000ms $easeOutExpo;
