@@ -64,7 +64,9 @@
               {{/let}}
             {{/each}}
           </ul>
-          <p>+ {{c.otherPeopleCount}} more valuable people</p>
+          {{#if (gt c.hiddenPeopleCount 0)}}
+            <p>+ {{c.hiddenPeopleCount}} more valuable people</p>
+          {{/if}}
         {{/if}}
 
         {{#if c.showMarkets}}

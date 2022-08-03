@@ -21,6 +21,7 @@ export default class CompanyModel extends Model {
   @attr('string') coreActivity;
   @attr('string') history;
   @attr('number') rankOnGroupWebsite;
+  @attr('number') headCount;
   @attr('boolean') showMarkets;
 
   @belongsTo('country') country;
@@ -117,7 +118,11 @@ export default class CompanyModel extends Model {
     );
   }
 
-  get otherPeopleCount() {
-    return 20;
+  get shownPeopleCount() {
+    return this.members.length;
+  }
+
+  get hiddenPeopleCount() {
+    return this.headCount - this.members.length;
   }
 }
