@@ -4,7 +4,11 @@
   <nav id='dots' aria-label='member navigation'>
     {{#if this.companies}}
       {{#each this.companies as |company i|}}
-        <button onclick={{fn this.showCompany i}} type='button'>
+        <button
+          onclick={{fn this.showCompany i}}
+          class={{if (eq i this.shownSlide) 'active' 'idle'}}
+          type='button'
+        >
           <div class='dot'></div>
         </button>
       {{/each}}
