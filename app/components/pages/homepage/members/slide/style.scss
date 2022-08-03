@@ -112,19 +112,19 @@
       display: flex;
       flex-direction: column;
       @include widescreen {
-        gap: 10px;
+        gap: 20px;
         margin: 14px 0;
       }
       @include desktop {
-        gap: vw(10px);
+        gap: vw(20px);
         margin: 14px 0;
       }
       @include tablet {
-        gap: 10px; // TODO
+        gap: 20px; // TODO
         margin: 14px 0;
       }
       @include mobile {
-        gap: 10px; // TODO
+        gap: 20px; // TODO
         margin: 14px 0;
       }
       li {
@@ -199,69 +199,6 @@
     p.contacts {
       display: flex;
       flex-direction: column;
-    }
-    .map {
-      position: relative;
-      margin: 14px 0 40px;
-      .flag {
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        outline: 1px solid white;
-        z-index: 1;
-      }
-    }
-    .markers {
-      display: none;
-    }
-    .mapbox {
-      width: 100%;
-      height: 260px;
-      position: relative;
-      z-index: 1;
-    }
-    .mapboxgl-marker {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      @include widescreen {
-        width: 30px;
-        height: 30px;
-      }
-      @include desktop {
-        width: vw(30px);
-        height: vw(30px);
-      }
-      @include tablet {
-        // TODO
-        width: 2vw;
-        height: 2vw;
-      }
-      @include mobile {
-        // TODO
-        width: 2vw;
-        height: 2vw;
-      }
-      &.shadow {
-        z-index: 1;
-        svg {
-          width: 80%;
-          height: auto;
-          animation: scale 1000ms $easeOutExpo;
-          transform: translateY(50%);
-        }
-      }
-      &.marker {
-        z-index: 2;
-        svg {
-          width: 100%;
-          height: auto;
-          animation: drop 1000ms $easeOutExpo;
-          .border {
-            opacity: 0;
-          }
-        }
-      }
     }
   }
 }

@@ -38,10 +38,11 @@
               {{#let member.person as |person|}}
                 <li>
                   <div class='avatar'>
-                    {{#if person.hasAvatar}}
-                      <img
-                        src='{{env "cdnHost"}}{{person.avatarSrc}}'
-                        alt={{person.fullName}}
+                    {{#if person.avatarPath}}
+                      <ResponsiveImage
+                        @path={{person.avatarPath}}
+                        @variations={{person.avatarVariations}}
+                        @alt={{person.fullName}}
                       />
                     {{else}}
                       <img
