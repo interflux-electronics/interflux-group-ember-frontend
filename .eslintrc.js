@@ -19,7 +19,9 @@ module.exports = {
   env: {
     browser: true
   },
-  rules: {},
+  rules: {
+    'ember/no-side-effects': 'warn'
+  },
   overrides: [
     // node files
     {
