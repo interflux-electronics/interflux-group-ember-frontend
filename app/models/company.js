@@ -106,10 +106,8 @@ export default class CompanyModel extends Model {
 
   get heroImage() {
     const country = this.slug.toLowerCase().replace('interflux-', '');
-    // const country = this.country.get('nameEnglish').toLowerCase();
 
-    // return `hero-${country}@1200x600.png`;
-    return `hero-${country}@1200x600.webp`;
+    return `hero-${country}`;
   }
 
   get showMarkets() {

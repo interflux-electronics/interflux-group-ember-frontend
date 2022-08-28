@@ -1,5 +1,7 @@
 <section id='members'>
-  <h2 class='h3'>Members</h2>
+  {{#if this.media.isDesktopWidescreen}}
+    <h2 class='h3'>Members</h2>
+  {{/if}}
 
   <nav id='dots' aria-label='member navigation'>
     {{#if this.companies}}
@@ -26,7 +28,7 @@
   </nav>
 
   <div id='slides' style={{this.slidesStyle}} {{did-insert this.onInsert}}>
-    <div id='stage' style={{this.stageStyle}}>
+    <div id='stage' data-shown-slide={{this.shownSlide}}>
       {{#each this.companies as |company i|}}
         <Pages::Homepage::Members::Slide
           @company={{company}}

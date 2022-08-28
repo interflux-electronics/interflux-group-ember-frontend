@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { htmlSafe } from '@ember/template';
 import { inject as service } from '@ember/service';
 
-export default class PagesHomepageMembersComponent extends Component {
+export default class PagesHomepageMembersSlideComponent extends Component {
   @service media;
   @service window;
 
@@ -17,19 +17,11 @@ export default class PagesHomepageMembersComponent extends Component {
   }
 
   get companies() {
-    if (!this.args.companies) {
+    if (this.args.companies) {
+      return this.args.companies.sortBy('rankOnGroupWebsite');
+    } else {
       return null;
     }
-    const members = this.args.companies.sortBy('rankOnGroupWebsite');
-    if (this.media.isDesktopWidescreen) {
-      return members;
-    }
-    const group = {
-      heroLogo: 'interflux-group',
-      businessName: 'Interflux Group',
-      heroImage: 'hero-electronics'
-    };
-    return [group, ...members];
   }
 
   @action
@@ -69,5 +61,11 @@ export default class PagesHomepageMembersComponent extends Component {
 
   get slidesStyle() {
     return htmlSafe(`height: ${this.slideHeight}px`);
+  }
+
+  get stageStyle() {
+    const offset = this.shownSlide * -1 * 400; // 300px logo + 100px gap
+
+    return htmlSafe(`left: ${offset}px`);
   }
 }

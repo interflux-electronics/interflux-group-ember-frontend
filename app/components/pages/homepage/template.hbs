@@ -1,12 +1,16 @@
 <main id='home'>
-  <Pages::Homepage::Hero />
-  {{#if @loading}}
-    <Pages::Homepage::Loading />
-  {{else}}
-    <Pages::Homepage::AboutUs />
-    <Pages::Homepage::Activities />
-    <Pages::Homepage::Locations @companies={{@companies}} />
-    <Pages::Homepage::Managers />
+  {{#if this.media.isMobileTablet}}
     <Pages::Homepage::Members @companies={{@companies}} />
+  {{else}}
+    <Pages::Homepage::Hero />
+    {{#if @loading}}
+      <Pages::Homepage::Loading />
+    {{else}}
+      <Pages::Homepage::AboutUs />
+      <Pages::Homepage::Activities />
+      <Pages::Homepage::Locations @companies={{@companies}} />
+      <Pages::Homepage::Managers />
+      <Pages::Homepage::Members @companies={{@companies}} />
+    {{/if}}
   {{/if}}
 </main>

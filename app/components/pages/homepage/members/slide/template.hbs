@@ -7,11 +7,19 @@
         class={{if @showSlide 'large' 'small'}}
       >
         <div class='bg'>
-          <img
-            src='{{cdn}}/images/group/{{c.heroImage}}'
-            aria-hidden='true'
-            alt=''
-          />
+          {{#if this.media.isMobileTablet}}
+            <img
+              src='{{cdn}}/images/group/{{c.heroImage}}-mobile@1200x1200.webp'
+              aria-hidden='true'
+              alt=''
+            />
+          {{else}}
+            <img
+              src='{{cdn}}/images/group/{{c.heroImage}}@1200x600.webp'
+              aria-hidden='true'
+              alt=''
+            />
+          {{/if}}
         </div>
 
         <div class='logo'>
@@ -27,94 +35,234 @@
       <div class='space'></div>
       <div class='inner'>
         {{#if c.coreActivity}}
-          <h3>Core activity</h3>
-          {{markdown c.coreActivity}}
+          <div class='block'>
+            <h3>Core activity</h3>
+            {{markdown c.coreActivity}}
+          </div>
         {{/if}}
 
         {{#if c.companyMembers}}
-          <h3>Team members</h3>
-          <ul class='people'>
-            {{#each c.companyMembers as |member|}}
-              {{#let member.person as |person|}}
-                <li>
-                  <div class='avatar'>
-                    {{#if person.avatarPath}}
-                      <ResponsiveImage
-                        @path={{person.avatarPath}}
-                        @variations={{person.avatarVariations}}
-                        @alt={{person.fullName}}
-                      />
-                    {{else}}
-                      <img
-                        src='{{env "cdnHost"}}/images/public/no-avatar.svg'
-                        aria-hidden='true'
-                        width='27'
-                        height='27'
-                      />
-                    {{/if}}
-                  </div>
-                  <div class='text'>
-                    <p>
-                      <strong>{{person.firstName}}
-                        {{person.lastName}}</strong>
-                      <span> {{person.chineseName}}</span>
-                    </p>
-                    <p>{{member.title}}</p>
-                  </div>
-                </li>
-              {{/let}}
-            {{/each}}
-          </ul>
-          {{#if (gt c.hiddenPeopleCount 0)}}
-            <p>+ {{c.hiddenPeopleCount}} more valuable people</p>
-          {{/if}}
+          <div class='block'>
+            <h3>Team members</h3>
+            <ul class='people'>
+              {{#each c.companyMembers as |member|}}
+                {{#let member.person as |person|}}
+                  <li>
+                    <div class='avatar'>
+                      {{#if person.avatarPath}}
+                        <ResponsiveImage
+                          @path={{person.avatarPath}}
+                          @variations={{person.avatarVariations}}
+                          @alt={{person.fullName}}
+                        />
+                      {{else}}
+                        <img
+                          src='{{env "cdnHost"}}/images/public/no-avatar.svg'
+                          aria-hidden='true'
+                          width='27'
+                          height='27'
+                        />
+                      {{/if}}
+                    </div>
+                    <div class='text'>
+                      <p>
+                        <strong>{{person.firstName}}
+                          {{person.lastName}}</strong>
+                        <span> {{person.chineseName}}</span>
+                      </p>
+                      <p>{{member.title}}</p>
+                    </div>
+                  </li>
+                {{/let}}
+              {{/each}}
+            </ul>
+            {{#if (gt c.hiddenPeopleCount 0)}}
+              <p>+ {{c.hiddenPeopleCount}} more valuable people</p>
+            {{/if}}
+          </div>
         {{/if}}
 
         {{#if c.showMarkets}}
-          <h3>Service area</h3>
-          <ul class='countries'>
-            {{#each c.markets as |country|}}
-              <li>
-                <Flag @country={{country}} />
-                <p>{{country.nameEnglish}}</p>
-              </li>
-            {{/each}}
-          </ul>
+          <div class='block'>
+            <h3>Service area</h3>
+            <ul class='countries'>
+              {{#each c.markets as |country|}}
+                <li>
+                  <Flag @country={{country}} />
+                  <p>{{country.nameEnglish}}</p>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
         {{/if}}
 
         {{#if c.history}}
-          <h3>History</h3>
-          {{markdown c.history}}
+          <div class='block'>
+            <h3>History</h3>
+            {{markdown c.history}}
+          </div>
         {{/if}}
 
-        <h3>Contact us</h3>
-        <p class='contacts'>
-          <p class='p address'>
-            {{#if c.legalName}}
-              <span>{{c.legalName}}</span>
-            {{/if}}
+        {{#if (or c.website c.emailGeneral c.phone c.address)}}
+          <div class='block'>
+            <h3>Contact us</h3>
+            <p class='contacts'>
+              <p class='p address'>
+                {{#if c.legalName}}
+                  <span>{{c.legalName}}</span>
+                {{/if}}
 
-            {{#if c.address}}
-              <span>{{c.address}}</span>
-            {{/if}}
+                {{#if c.address}}
+                  <span>{{c.address}}</span>
+                {{/if}}
 
-            {{#if c.country.nameEnglish}}
-              <span>{{c.country.nameEnglish}}</span>
-            {{/if}}
-          </p>
+                {{#if c.country.nameEnglish}}
+                  <span>{{c.country.nameEnglish}}</span>
+                {{/if}}
+              </p>
 
-          {{#if c.website}}
-            <Link @url={{c.websiteForRobots}} @label={{c.websiteForHumans}} />
-          {{/if}}
+              {{#if c.website}}
+                <Link
+                  @url={{c.websiteForRobots}}
+                  @label={{c.websiteForHumans}}
+                />
+              {{/if}}
 
-          {{#if c.emailGeneral}}
-            <Link @url='mailto:{{c.emailGeneral}}' @label={{c.emailGeneral}} />
-          {{/if}}
+              {{#if c.emailGeneral}}
+                <Link
+                  @url='mailto:{{c.emailGeneral}}'
+                  @label={{c.emailGeneral}}
+                />
+              {{/if}}
 
-          {{#if c.phone}}
-            <Link @url='tel:{{c.phoneForRobots}}' @label={{c.phoneForHumans}} />
-          {{/if}}
-        </p>
+              {{#if c.phone}}
+                <Link
+                  @url='tel:{{c.phoneForRobots}}'
+                  @label={{c.phoneForHumans}}
+                />
+              {{/if}}
+            </p>
+          </div>
+        {{/if}}
+
+        {{#if (eq c.businessName 'Interflux Group')}}
+          <div class='block'>
+            <h2>Chemistry, machines and know-how for electronics manufacturers</h2>
+          </div>
+
+          <div class='block'>
+            <h3>About us</h3>
+            <p>The Interflux Group is a worldwide network of manufacturers,
+              researchers and distributors who supply the electronics industry
+              with soldering chemistry, equipment and know-how.</p>
+            <p>We've been working with electronics manufacturers since 1980.
+              That’s 42 years of continued trust in our products and way of
+              working. That is 42 years of accumulated know-how about all
+              assembly techniques, all trends and all issues known to
+              electronics manufacturers.</p>
+            <img
+              src='{{cdn}}/images/group/about-us@1184x1114.jpg'
+              width='592'
+              height='557'
+              alt='stencil printing, circuit board and selective soldering fountain'
+            />
+          </div>
+
+          <div class='block'>
+            <h3>Chemistry for soldering electronics</h3>
+            <p>The Interflux Group sells and supports the soldering materials
+              produced by Interflux Electronics. Other materials in the
+              portfolio are adhesives, cleaners, conformal coatings etc…</p>
+            <img
+              src='{{cdn}}/images/group/chemistry@1016x684.jpg'
+              width='508'
+              height='342'
+              alt='X-ray close up of a perfect wetting on the soldering joint of an electronics component'
+            />
+          </div>
+
+          <div class='block'>
+            <h3>Equipment for manufacturing electronics</h3>
+            <p>Selective and wave soldering machines, reflow ovens, AOI, SPI,
+              X-ray, cleaning machines and manual soldering equipment are just a
+              selection out of the high end portfolio of the Interflux Group.
+              Interflux Singapore develops and manufacturers jet and spray
+              fluxing systems.</p>
+            <img
+              src='{{cdn}}/images/group/machine@1291x990.jpg'
+              width='645'
+              height='495'
+              alt='Ersa preheating oven'
+            />
+          </div>
+
+          <div class='block'>
+            <h3>Know-how transfers</h3>
+            <p>+42 years of international technical and process experience is
+              shared with our customers by means of free webinars, on site
+              trainings and start-ups. Good process knowledge is essential to
+              produce a high quality end product.</p>
+            <img
+              src='{{cdn}}/images/group/know-how@1044x816.webp'
+              width='522'
+              height='408'
+              alt='two people in a laboratory pointing at a screen'
+            />
+          </div>
+
+          <div class='block'>
+            <h3>Coordinated by 14 companies across the world</h3>
+            <p>Combined we serve customers in 80+ countries.</p>
+            <h3>Close to all the action</h3>
+            <p>Our intent is to be present in all major hubs of the electronics
+              industry so we can can localise our customer support and better
+              understand local market trends.</p>
+          </div>
+
+          <div class='block'>
+            <h3>Managed by</h3>
+            <ul>
+              <li>
+                <img
+                  src='{{cdn}}/images/people/daniel-werkhoven-1@250x250.webp'
+                  alt='Daniel Werkhoven'
+                  width='75'
+                  height='75'
+                />
+                <div class='text'>
+                  <h3 class='h3'>Daniel Werkhoven</h3>
+                  <p>Founder, Director & CEO</p>
+                </div>
+              </li>
+
+              <li>
+                <img
+                  src='{{cdn}}/images/people/steven-teliszewski@160x160.jpg'
+                  alt='Steven Teliszewski'
+                  width='75'
+                  height='75'
+                />
+                <div class='text'>
+                  <h3 class='h3'>Steven Teliszewski</h3>
+                  <p>Chief Operating Officer</p>
+                </div>
+              </li>
+
+              <li>
+                <img
+                  src='{{env "cdnHost"}}/images/public/no-avatar.svg'
+                  aria-hidden='true'
+                  width='75'
+                  height='75'
+                />
+                <div class='text'>
+                  <h3 class='h3'>Annick Peeters</h3>
+                  <p>Chief Operating Officer</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>

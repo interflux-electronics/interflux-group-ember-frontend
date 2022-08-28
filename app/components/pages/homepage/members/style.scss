@@ -1,26 +1,21 @@
 #home #members {
-  background-color: $grey-0;
-  background: radial-gradient(white, $grey-0);
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: bottom right;
   box-sizing: border-box;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  @include desktop-and-up {
+    background: $grey-0 radial-gradient(white, $grey-0);
+  }
+  @include tablet-and-below {
+    background: $grey-0;
+  }
   @include widescreen {
     padding: 100px 0;
   }
   @include desktop {
     padding: vw(100px) 0;
-  }
-  @include tablet {
-    // TODO
-  }
-  @include mobile {
-    // TODO
   }
   h2 {
     text-align: center;
@@ -33,22 +28,40 @@
     @include desktop {
       padding: vw(25px) 0 30px;
     }
-    @include tablet {
-      padding: 25px 0 30px; // TODO
-    }
-    @include mobile {
-      padding: 25px 0 30px; // TODO
+    @include tablet-and-below {
+      position: absolute;
+      z-index: 3;
+      top: 100vw;
+      width: 100vw;
+      height: 16vw;
+      justify-content: center;
+      align-items: center;
+      background: white;
     }
     button {
       background: none;
       border: 0;
-      width: 26px;
-      height: 26px;
       padding: 0;
-      cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      @include widescreen {
+        width: 26px;
+        height: 26px;
+      }
+      @include desktop {
+        width: vw(26px);
+        height: vw(26px);
+      }
+      @include tablet {
+        width: 2vw;
+        height: 2vw;
+      }
+      @include mobile {
+        width: 4vw;
+        height: 4vw;
+      }
       &:hover,
       &:focus {
         .dot {
@@ -62,31 +75,47 @@
         }
       }
       .dot {
-        width: 10px;
-        height: 10px;
         border-radius: 50%;
         background: $grey-4;
         transition: transform 300ms $easeOutExpo;
+        @include widescreen {
+          width: 10px;
+          height: 10px;
+        }
+        @include desktop {
+          width: vw(10px);
+          height: vw(10px);
+        }
+        @include tablet {
+          width: 50%;
+          height: 50%;
+        }
+        @include mobile {
+          width: 50%;
+          height: 50%;
+        }
       }
     }
   }
   nav#arrows {
-    height: 0;
-    z-index: 3;
     display: flex;
     justify-content: space-between;
     position: relative;
+    z-index: 3;
     @include widescreen {
+      height: 0;
       width: 780px;
     }
     @include desktop {
+      height: 0;
       width: vw(780px);
     }
-    @include tablet {
-      width: vw(780px); // TODO
-    }
-    @include mobile {
-      width: vw(780px); // TODO
+    @include tablet-and-below {
+      position: absolute;
+      top: 100vw;
+      width: 100vw;
+      box-sizing: border-box;
+      padding: 3vw;
     }
     button {
       display: flex;
@@ -110,9 +139,9 @@
         border-radius: vw(4px); // TODO
       }
       @include mobile {
-        width: 50px; // TODO
-        height: 50px; // TODO
-        border-radius: vw(4px); // TODO
+        width: 10vw;
+        height: 10vw;
+        border-radius: 0.8vw;
       }
       &:hover,
       &:focus {
@@ -145,7 +174,7 @@
           width: 11px; // TODO
         }
         @include mobile {
-          width: 11px; // TODO
+          width: 2.4vw;
         }
         [fill] {
           fill: $grey-4;
@@ -156,17 +185,48 @@
   #slides {
     position: relative;
     min-height: 300px;
-    width: 600px;
     transition: all 1500ms $easeOutExpo;
+    @include desktop-and-up {
+      width: 600px;
+    }
+    @include tablet-and-below {
+      width: 100vw;
+    }
     #stage {
       position: absolute;
       transition: all 1500ms $easeOutExpo;
       display: flex;
-      gap: 100px;
       align-items: flex-start;
+      @include desktop-and-up {
+        gap: 100px;
+      }
+      @include tablet-and-below {
+        gap: 2.5vw;
+      }
+      @for $i from 0 through 14 {
+        &[data-shown-slide='#{$i}'] {
+          @include desktop-and-up {
+            left: calc(400px * -1 * $i);
+          }
+          @include tablet-and-below {
+            left: calc(102.5vw * -1 * $i);
+          }
+        }
+      }
     }
   }
   img.footer {
-    margin-top: 40px;
+    @include widescreen {
+      margin-top: 40px;
+    }
+    @include desktop {
+      margin-top: vw(40px);
+    }
+    @include tablet {
+      margin: 5vw 0;
+    }
+    @include mobile {
+      margin: 10vw 0;
+    }
   }
 }

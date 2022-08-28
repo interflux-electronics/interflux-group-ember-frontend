@@ -1,18 +1,32 @@
 #home #members .slide {
   position: relative;
+  @include tablet-and-below {
+    width: 100vw;
+  }
   &.active {
     .hero {
       button {
-        border-radius: 4px 4px 0 0;
-        width: 600px;
-        height: 300px;
+        @include desktop-and-up {
+          border-radius: 4px 4px 0 0;
+          width: 600px;
+          height: 300px;
+        }
+        @include tablet-and-below {
+          width: 100vw;
+          height: 100vw;
+        }
       }
     }
     .content {
       opacity: 1;
       width: 600px;
-      background: white;
-      box-shadow: 0 4px 14px rgba(black, 0.15);
+      @include desktop-and-up {
+        background: white;
+        box-shadow: 0 4px 14px rgba(black, 0.15);
+      }
+      @include tablet-and-below {
+        width: 100vw;
+      }
     }
   }
   .hero {
@@ -24,6 +38,9 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
+    @include tablet-and-below {
+      height: 100vw;
+    }
     button {
       display: grid;
       grid-template-areas: 'center';
@@ -40,14 +57,28 @@
       transition: all 1500ms $easeOutExpo;
       width: 300px;
       height: 108px;
+      @include tablet-and-below {
+        width: 100vw;
+        height: 100vw;
+      }
       .logo {
         grid-area: center;
         background-color: rgba($blue-4, 0.85);
-        width: 300px;
-        height: 108px;
         display: flex;
         justify-content: center;
         align-items: center;
+        @include desktop-and-up {
+          width: 300px;
+          height: 108px;
+        }
+        @include tablet {
+          width: 80vw; // TODO
+          height: 28.8vw; // TODO
+        }
+        @include mobile {
+          width: 80vw;
+          height: 28.8vw;
+        }
         img {
           height: auto;
           width: 89%;
@@ -60,7 +91,6 @@
           height: auto;
         }
       }
-
       img {
         height: auto;
         width: 89%;
@@ -80,7 +110,18 @@
       opacity: 0;
     }
     .space {
-      height: 300px;
+      @include widescreen {
+        height: 300px;
+      }
+      @include desktop {
+        height: 300px;
+      }
+      @include tablet {
+        height: 300px; // TODO
+      }
+      @include mobile {
+        height: calc(100vw + 16vw);
+      }
     }
     .inner {
       width: 600px;
@@ -97,6 +138,28 @@
       }
       @include mobile {
         // TODO
+      }
+    }
+    .block {
+      @include tablet-and-below {
+        background: white;
+        box-sizing: border-box;
+        width: 100vw;
+      }
+      @include tablet {
+        padding: 4vw 2vw;
+        border: 1vw solid $grey-0;
+        border-bottom: 0;
+      }
+      @include mobile {
+        padding: 10vw 5vw;
+        border: 2.25vw solid $grey-0;
+        border-bottom: 0;
+      }
+    }
+    .block + .block {
+      @include desktop-and-up {
+        margin-top: 40px;
       }
     }
     h3 + p,
@@ -199,6 +262,10 @@
     p.contacts {
       display: flex;
       flex-direction: column;
+    }
+    .block > img {
+      max-width: 100%;
+      height: auto;
     }
   }
 }

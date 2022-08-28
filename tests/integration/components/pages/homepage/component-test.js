@@ -2,11 +2,14 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'interflux-group/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setBreakpoint } from 'ember-responsive/test-support';
 
 module('Integration | Component | pages/homepage', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
+    setBreakpoint('widescreen');
+
     await render(hbs`<Pages::Homepage />`);
 
     assert.dom('h1').exists();
