@@ -21,7 +21,7 @@ export default class PagesHomepageMembersComponent extends Component {
       return null;
     }
     const members = this.args.companies.sortBy('rankOnGroupWebsite');
-    if (this.media.isDesktopWidescreen) {
+    if (this.media.isDesktop || this.media.isWidescreen) {
       return members;
     }
     const group = {

@@ -7,7 +7,7 @@
         class={{if @showSlide 'large' 'small'}}
       >
         <div class='bg'>
-          {{#if this.media.isMobileTablet}}
+          {{#if (or (media 'mobile') (media 'tablet'))}}
             <img
               src='{{cdn}}/images/group/{{c.heroImage}}-mobile@1200x1200.webp'
               aria-hidden='true'
@@ -147,7 +147,9 @@
 
         {{#if (eq c.businessName 'Interflux Group')}}
           <div class='block'>
-            <h2>Chemistry, machines and know-how for electronics manufacturers</h2>
+            <h1 class='h2'>
+              Chemistry, machines and know-how for electronics manufacturers
+            </h1>
           </div>
 
           <div class='block'>

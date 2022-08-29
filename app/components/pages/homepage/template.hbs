@@ -1,7 +1,9 @@
 <main id='home'>
-  {{#if this.media.isMobileTablet}}
+  {{#if (or (media 'isMobile') (media 'isTablet'))}}
     <Pages::Homepage::Members @companies={{@companies}} />
-  {{else}}
+  {{/if}}
+
+  {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
     <Pages::Homepage::Hero />
     {{#if @loading}}
       <Pages::Homepage::Loading />
