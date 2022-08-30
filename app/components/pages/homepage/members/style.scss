@@ -43,10 +43,13 @@
       background: none;
       border: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       cursor: pointer;
+      display: grid;
+      grid-template-areas: 'center';
+      grid-template-columns: auto;
+      grid-template-rows: minmax(0, 1fr);
+      align-items: center;
+      justify-items: center;
       @include widescreen {
         width: 26px;
         height: 26px;
@@ -66,19 +69,26 @@
       &:hover,
       &:focus {
         .dot {
-          background: $blue-0;
+          background: $orange-0;
+        }
+        .ring {
+          border-color: $orange-0;
         }
       }
       &.active {
         .dot {
-          transform: scale(1.5);
           background: $orange-0;
         }
+        .ring {
+          transform: scale(1.8);
+          border-color: $orange-0;
+        }
       }
-      .dot {
+      .dot,
+      .ring {
         border-radius: 50%;
-        background: $grey-4;
-        transition: transform 300ms $easeOutExpo;
+        transition: border-color 500ms $easeOutExpo;
+        grid-area: center;
         @include widescreen {
           width: 10px;
           height: 10px;
@@ -95,6 +105,15 @@
           width: 50%;
           height: 50%;
         }
+      }
+      .dot {
+        background-color: $grey-5;
+      }
+      .ring {
+        transition: all 500ms $easeOutExpo;
+        transition-property: transform, background-color;
+        border: 1px solid $grey-5;
+        box-sizing: border-box;
       }
     }
   }
