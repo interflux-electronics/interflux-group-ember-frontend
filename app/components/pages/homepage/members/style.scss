@@ -32,12 +32,18 @@
     @include tablet-and-below {
       position: absolute;
       z-index: 3;
-      top: 100vw;
       width: 100vw;
-      height: 16vw;
       justify-content: center;
       align-items: center;
       background: white;
+    }
+    @include tablet {
+      top: 50vw;
+      height: 8vw;
+    }
+    @include mobile {
+      top: 100vw;
+      height: 16vw;
     }
     button {
       background: none;
@@ -59,8 +65,8 @@
         height: vw(26px);
       }
       @include tablet {
-        width: 2vw;
-        height: 2vw;
+        width: 2.7vw;
+        height: 2.7vw;
       }
       @include mobile {
         width: 4vw;
@@ -114,6 +120,18 @@
         transition-property: transform, background-color;
         border: 1px solid $grey-5;
         box-sizing: border-box;
+        @include widescreen {
+          border-width: 1px;
+        }
+        @include desktop {
+          border-width: vw(1px);
+        }
+        @include tablet {
+          border-width: 0.15vw;
+        }
+        @include mobile {
+          border-width: 0.2vw;
+        }
       }
     }
   }
@@ -132,9 +150,15 @@
     }
     @include tablet-and-below {
       position: absolute;
-      top: 100vw;
       width: 100vw;
       box-sizing: border-box;
+    }
+    @include tablet {
+      top: 50vw;
+      padding: 1vw 2vw;
+    }
+    @include mobile {
+      top: 100vw;
       padding: 3vw;
     }
     button {
@@ -154,9 +178,9 @@
         border-radius: vw(4px);
       }
       @include tablet {
-        width: 50px; // TODO
-        height: 50px; // TODO
-        border-radius: vw(4px); // TODO
+        width: 6vw;
+        height: 6vw;
+        border-radius: 0.4vw;
       }
       @include mobile {
         width: 10vw;
@@ -191,13 +215,13 @@
           width: vw(11px);
         }
         @include tablet {
-          width: 11px; // TODO
+          width: 1.5vw;
         }
         @include mobile {
           width: 2.4vw;
         }
         [fill] {
-          fill: $grey-4;
+          fill: $grey-5;
         }
       }
     }
@@ -243,7 +267,7 @@
       margin-top: vw(40px);
     }
     @include tablet {
-      margin: 5vw 0;
+      margin: 7vw 0;
     }
     @include mobile {
       margin: 10vw 0;

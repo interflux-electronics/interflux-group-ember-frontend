@@ -11,12 +11,6 @@
       gap: vw(200px);
       padding: vw(150px) 0 vw(250px);
     }
-    @include tablet {
-      // TODO
-    }
-    @include mobile {
-      // TODO
-    }
     li {
       justify-content: space-between;
       align-items: center;
@@ -29,14 +23,8 @@
       }
       @include desktop {
         display: flex;
-        padding-left: 0 vw(60px) 0 vw(180px);
+        padding: 0 vw(60px) 0 vw(180px);
         gap: vw(60px);
-      }
-      @include tablet {
-        // TODO
-      }
-      @include mobile {
-        // TODO
       }
       &#chemistry {
         flex-direction: row-reverse;
@@ -64,12 +52,6 @@
           }
           @include desktop {
             width: vw(480px);
-          }
-          @include tablet {
-            // TODO
-          }
-          @include mobile {
-            // TODO
           }
         }
       }
@@ -114,12 +96,6 @@
             transform: translateY(0.666vw);
             padding-top: vw(40px);
           }
-          @include tablet {
-            // TODO
-          }
-          @include mobile {
-            // TODO
-          }
         }
       }
       &#know-how {
@@ -147,12 +123,6 @@
           @include desktop {
             width: vw(520px);
           }
-          @include tablet {
-            // TODO
-          }
-          @include mobile {
-            // TODO
-          }
         }
       }
       h2 {
@@ -161,12 +131,6 @@
         }
         @include desktop {
           margin: vw(16px) 0 vw(15px);
-        }
-        @include tablet {
-          // TODO
-        }
-        @include mobile {
-          // TODO
         }
       }
     }

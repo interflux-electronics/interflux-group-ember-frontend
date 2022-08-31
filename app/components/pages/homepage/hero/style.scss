@@ -4,19 +4,13 @@
   background-color: $green-3;
   @include widescreen {
     height: 90vh;
-    max-height: 800px;
+    max-height: 700px;
     min-height: 500px;
   }
   @include desktop {
     height: 90vh;
-    max-height: vw(800px);
+    max-height: vw(700px);
     min-height: vw(500px);
-  }
-  @include tablet {
-    height: 50vw; // TODO
-  }
-  @include mobile {
-    height: 100vw; // TODO
   }
   .liner {
     height: 100%;
@@ -42,14 +36,6 @@
     }
     @include desktop {
       height: vw(800px);
-    }
-    @include tablet {
-      width: 100vw; // TODO
-      height: 50vw; // TODO
-    }
-    @include mobile {
-      width: 100vw; // TODO
-      height: 100vw; // TODO
     }
     .preload,
     .high-res {
@@ -99,14 +85,6 @@
       max-width: vw(580px);
       gap: vw(10px);
     }
-    @include tablet {
-      font-size: vw-tablet(32px);
-      padding: vw-tablet(6px) vw-tablet(12px);
-    }
-    @include mobile {
-      font-size: vw-mobile(32px);
-      padding: vw-mobile(6px) vw-mobile(12px);
-    }
     span {
       background-color: rgba($green-3, 0.7);
       padding: 4px 8px;
@@ -125,10 +103,6 @@
       left: vw(50px);
       top: vw(50px);
       width: vw(270px);
-    }
-    @include tablet {
-    }
-    @include mobile {
     }
   }
 }

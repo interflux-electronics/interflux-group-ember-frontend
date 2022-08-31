@@ -21,14 +21,15 @@
     @include desktop {
       transform: translateY(-5.8333vw);
     }
-    @include tablet {
-    }
-    @include mobile {
-    }
   }
   img {
-    width: 580px;
     height: auto;
+    @include widescreen {
+      width: 580px;
+    }
+    @include desktop {
+      width: vw(580px);
+    }
   }
   .liner {
     display: flex;
@@ -40,12 +41,6 @@
     @include desktop {
       padding: vw(180px) vw(60px) vw(70px) vw(180px);
       gap: vw(40px);
-    }
-    @include tablet {
-      // TODO
-    }
-    @include mobile {
-      // TODO
     }
   }
 }

@@ -7,7 +7,7 @@
         class={{if @showSlide 'large' 'small'}}
       >
         <div class='bg'>
-          {{#if (or (media 'mobile') (media 'tablet'))}}
+          {{#if (or (media 'mobile'))}}
             <img
               src='{{cdn}}/images/group/{{c.heroImage}}-mobile@1200x1200.webp'
               aria-hidden='true'
@@ -223,14 +223,18 @@
 
           <div class='block'>
             <h3>Managed by</h3>
-            <ul>
+
+            <ul class='people'>
               <li>
-                <img
-                  src='{{cdn}}/images/people/daniel-werkhoven-1@250x250.webp'
-                  alt='Daniel Werkhoven'
-                  width='75'
-                  height='75'
-                />
+                <div class='avatar'>
+                  <img
+                    src='{{cdn}}/images/people/daniel-werkhoven-1@250x250.webp'
+                    alt='Daniel Werkhoven'
+                    width='75'
+                    height='75'
+                  />
+                </div>
+
                 <div class='text'>
                   <h3 class='h3'>Daniel Werkhoven</h3>
                   <p>Founder, Director & CEO</p>
@@ -238,12 +242,15 @@
               </li>
 
               <li>
-                <img
-                  src='{{cdn}}/images/people/steven-teliszewski@160x160.jpg'
-                  alt='Steven Teliszewski'
-                  width='75'
-                  height='75'
-                />
+                <div class='avatar'>
+                  <img
+                    src='{{cdn}}/images/people/steven-teliszewski@160x160.jpg'
+                    alt='Steven Teliszewski'
+                    width='75'
+                    height='75'
+                  />
+                </div>
+
                 <div class='text'>
                   <h3 class='h3'>Steven Teliszewski</h3>
                   <p>Chief Operating Officer</p>
@@ -251,12 +258,15 @@
               </li>
 
               <li>
-                <img
-                  src='{{env "cdnHost"}}/images/public/no-avatar.svg'
-                  aria-hidden='true'
-                  width='75'
-                  height='75'
-                />
+                <div class='avatar'>
+                  <img
+                    src='{{env "cdnHost"}}/images/public/no-avatar.svg'
+                    aria-hidden='true'
+                    width='75'
+                    height='75'
+                  />
+                </div>
+
                 <div class='text'>
                   <h3 class='h3'>Annick Peeters</h3>
                   <p>Chief Operating Officer</p>

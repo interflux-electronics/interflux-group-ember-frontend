@@ -5,13 +5,13 @@
 
   {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
     <Pages::Homepage::Hero />
+    <Pages::Homepage::AboutUs />
     {{#if @loading}}
       <Pages::Homepage::Loading />
     {{else}}
-      <Pages::Homepage::AboutUs />
       <Pages::Homepage::Activities />
       <Pages::Homepage::Locations @companies={{@companies}} />
-      <Pages::Homepage::Managers />
+      <Pages::Homepage::Managers @companies={{@companies}} />
       <Pages::Homepage::Members @companies={{@companies}} />
     {{/if}}
   {{/if}}

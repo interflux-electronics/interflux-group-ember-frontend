@@ -11,7 +11,11 @@
           width: 600px;
           height: 300px;
         }
-        @include tablet-and-below {
+        @include tablet {
+          width: 100vw;
+          height: 50vw;
+        }
+        @include mobile {
           width: 100vw;
           height: 100vw;
         }
@@ -38,7 +42,10 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
-    @include tablet-and-below {
+    @include tablet {
+      height: 50vw;
+    }
+    @include mobile {
       height: 100vw;
     }
     button {
@@ -57,7 +64,11 @@
       transition: all 1500ms $easeOutExpo;
       width: 300px;
       height: 108px;
-      @include tablet-and-below {
+      @include tablet {
+        width: 100vw;
+        height: 50vw;
+      }
+      @include mobile {
         width: 100vw;
         height: 100vw;
       }
@@ -72,8 +83,8 @@
           height: 108px;
         }
         @include tablet {
-          width: 80vw; // TODO
-          height: 28.8vw; // TODO
+          width: 42vw;
+          height: 14vw;
         }
         @include mobile {
           width: 80vw;
@@ -117,7 +128,7 @@
         height: 300px;
       }
       @include tablet {
-        height: 300px; // TODO
+        height: calc(50vw + 8vw);
       }
       @include mobile {
         height: calc(100vw + 16vw);
@@ -147,8 +158,8 @@
         width: 100vw;
       }
       @include tablet {
-        padding: 4vw 2vw;
-        border: 1vw solid $grey-0;
+        padding: 6vw;
+        border: 2vw solid $grey-0;
         border-bottom: 0;
       }
       @include mobile {
@@ -210,14 +221,14 @@
             margin-right: vw(16px);
           }
           @include tablet {
-            width: vw-tablet(70px);
-            height: vw-tablet(70px);
-            margin-right: vw-tablet(16px);
+            width: 10vw;
+            height: 10vw;
+            margin-right: 3vw;
           }
           @include mobile {
-            width: vw-mobile(70px);
-            height: vw-mobile(70px);
-            margin-right: vw-mobile(16px);
+            width: 18vw;
+            height: 18vw;
+            margin-right: 5vw;
           }
           img {
             width: 100%;
