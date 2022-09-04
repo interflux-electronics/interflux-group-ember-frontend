@@ -9,11 +9,11 @@ module('Integration | Component | pages/homepage/managers', function (hooks) {
   test('it renders', async function (assert) {
     await render(hbs`<Pages::Homepage::Managers />`);
 
-    const headings = this.element.querySelectorAll('h3');
+    const headings = this.element.querySelectorAll('h4');
     const expected = [
       'Daniel Werkhoven',
-      'Steven Teliszewski',
-      'Annick Peeters'
+      'Annick Peeters',
+      'Steven Teliszewski'
     ];
 
     assert.strictEqual(headings.length, 3);
