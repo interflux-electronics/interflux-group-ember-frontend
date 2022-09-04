@@ -1,6 +1,10 @@
 <main id='home'>
   {{#if (or (media 'isMobile') (media 'isTablet'))}}
-    <Pages::Homepage::Members @companies={{@companies}} />
+    {{#if @loading}}
+      <Pages::Homepage::Loading />
+    {{else}}
+      <Pages::Homepage::Members @companies={{@companies}} />
+    {{/if}}
   {{/if}}
 
   {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
@@ -11,7 +15,7 @@
     {{else}}
       <Pages::Homepage::Activities />
       <Pages::Homepage::Locations @companies={{@companies}} />
-      <Pages::Homepage::Managers @companies={{@companies}} />
+      <Pages::Homepage::Managers />
       <Pages::Homepage::Members @companies={{@companies}} />
     {{/if}}
   {{/if}}

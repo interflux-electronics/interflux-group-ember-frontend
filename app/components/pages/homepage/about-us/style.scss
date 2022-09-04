@@ -1,14 +1,7 @@
 #home #about-us {
-  .text,
-  img {
-    transition: all 2000ms $easeOutExpo;
-  }
   .text {
     position: relative;
     z-index: 1;
-    h2 {
-      width: 160%;
-    }
     p {
       max-width: 200%;
       span {
@@ -41,6 +34,13 @@
     @include desktop {
       padding: vw(180px) vw(60px) vw(70px) vw(180px);
       gap: vw(40px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      flex-direction: column;
+      margin: 0;
     }
   }
 }

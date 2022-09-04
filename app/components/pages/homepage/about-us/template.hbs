@@ -1,7 +1,7 @@
 <section id='about-us'>
-  <div class='liner'>
+  <div class='liner block'>
     <div class='text'>
-      <h2 class='h2'>About us</h2>
+      <h2 class={{if (media 'mobile') 'h3' 'h2'}}>About us</h2>
       <p>The Interflux Group is a worldwide network of manufacturers,
         researchers and distributors who supply the electronics industry with
         soldering chemistry, equipment and know-how.</p>
@@ -11,11 +11,20 @@
         and all issues known to electronics manufacturers.</p>
     </div>
 
-    <img
-      src='{{cdn}}/images/group/about-us@1184x1114.jpg'
-      width='592'
-      height='557'
-      alt='stencil printing, circuit board and selective soldering fountain'
-    />
+    {{#if (media 'mobile')}}
+      <img
+        src='{{cdn}}/images/group/about-us-mobile@750x600.webp'
+        width='375'
+        height='300'
+        alt='stencil printing, circuit board and selective soldering fountain'
+      />
+    {{else}}
+      <img
+        src='{{cdn}}/images/group/about-us@1184x1114.webp'
+        width='592'
+        height='557'
+        alt='stencil printing, circuit board and selective soldering fountain'
+      />
+    {{/if}}
   </div>
 </section>

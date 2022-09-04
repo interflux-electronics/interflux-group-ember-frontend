@@ -1,0 +1,27 @@
+<div class='hero'>
+  <button
+    type='button'
+    onclick={{@onHeroClick}}
+    class={{if @showSlide 'large' 'small'}}
+  >
+    <div class='bg'>
+      {{#if (media 'mobile')}}
+        <img
+          src='{{cdn}}/images/group/{{@hero}}-mobile@1200x1200.webp'
+          aria-hidden='true'
+          alt=''
+        />
+      {{else}}
+        <img
+          src='{{cdn}}/images/group/{{@hero}}@1200x600.webp'
+          aria-hidden='true'
+          alt=''
+        />
+      {{/if}}
+    </div>
+
+    <div class='logo'>
+      <img src='{{cdn}}/images/logos/{{@logo}}-logo-white.svg' alt={{@name}} />
+    </div>
+  </button>
+</div>

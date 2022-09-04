@@ -14,21 +14,37 @@
     {{/each}}
   </div>
 
-  <div class='text'>
-    <h2>Coordinated by 14 companies across the world</h2>
-    <Waypoint @onFirstView={{this.onFirstView}} />
-    <p>Combined we serve customers in 80+ countries.</p>
-    <h2>Close to all the action</h2>
-    <p>Our intent is to be present in all major hubs of the electronics industry
-      so we can can localise our customer support and better understand local
-      market trends.</p>
-  </div>
+  {{#if (media 'mobile')}}
+    <div class='text-mobile block'>
+      <h2 class='h2'>Coordinated by 14 companies across the world</h2>
+      <Waypoint @onFirstView={{this.onFirstView}} />
+      <p>
+        Combined we serve customers in 80+ countries. Our intent is to be
+        present in all major hubs of the electronics industry so we can can
+        localise our customer support and better understand local market trends.
+      </p>
+    </div>
+  {{else}}
+    <div class='text'>
+      <h2 class='h2'>Coordinated by 14 companies across the world</h2>
+      <Waypoint @onFirstView={{this.onFirstView}} />
+      <p>Combined we serve customers in 80+ countries.</p>
+      <h2 class='h2'>Close to all the action</h2>
+      <p>
+        Our intent is to be present in all major hubs of the electronics
+        industry so we can can localise our customer support and better
+        understand local market trends.
+      </p>
+    </div>
+  {{/if}}
 
-  <img
-    id='logo'
-    src='{{cdn}}/images/logos/interflux-group-logo-white.svg'
-    alt='Interflux Group'
-    width='1000'
-    height='253'
-  />
+  {{#unless (media 'mobile')}}
+    <img
+      id='logo'
+      src='{{cdn}}/images/logos/interflux-group-logo-white.svg'
+      alt='Interflux Group'
+      width='1000'
+      height='253'
+    />
+  {{/unless}}
 </section>

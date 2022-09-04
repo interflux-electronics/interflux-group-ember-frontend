@@ -31,12 +31,22 @@
   <div id='slides' style={{this.slidesStyle}} {{did-insert this.onInsert}}>
     <div id='stage' data-shown-slide={{this.shownSlide}}>
       {{#each this.companies as |company i|}}
-        <Pages::Homepage::Members::Slide
-          @company={{company}}
-          @showSlide={{eq i this.shownSlide}}
-          @showContent={{eq i this.shownContent}}
-          @onHeroClick={{fn this.showCompany i}}
-        />
+        {{#if company.isGroup}}
+          <Pages::Homepage::Members::Group
+            @companies={{this.companies}}
+            @showSlide={{eq i this.shownSlide}}
+            @showContent={{eq i this.shownContent}}
+            @onHeroClick={{fn this.showCompany i}}
+          />
+        {{else}}
+          <Pages::Homepage::Members::Slide
+            @company={{company}}
+            @showSlide={{eq i this.shownSlide}}
+            @showContent={{eq i this.shownContent}}
+            @onHeroClick={{fn this.showCompany i}}
+          />
+        {{/if}}
+
       {{/each}}
     </div>
   </div>

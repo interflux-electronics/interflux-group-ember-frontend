@@ -8,7 +8,6 @@
     opacity: 1;
   }
 }
-
 @keyframes scale {
   0% {
     transform: scale(0) translateY(50%);
@@ -18,18 +17,36 @@
   }
 }
 #home #locations {
-  background: $blue-4;
-  position: relative;
+  @include widescreen {
+    background: $blue-4;
+    position: relative;
+  }
+  @include desktop {
+    background: $blue-4;
+    position: relative;
+  }
+  @include tablet {
+  }
+  @include mobile {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   #mapbox {
     position: relative;
     z-index: 1;
     @include widescreen {
       height: 60vw;
-      // max-height: 900px;
     }
     @include desktop {
       height: 60vw;
-      // max-height: vw(900px);
+    }
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      height: 100vw;
+      width: 94vw;
+      left: 3vw;
     }
   }
   #markers {

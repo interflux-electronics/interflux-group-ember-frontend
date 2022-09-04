@@ -25,9 +25,7 @@ export default class PagesHomepageMembersComponent extends Component {
       return members;
     }
     const group = {
-      heroLogo: 'interflux-group',
-      businessName: 'Interflux Group',
-      heroImage: 'hero-electronics'
+      isGroup: true
     };
     return [group, ...members];
   }

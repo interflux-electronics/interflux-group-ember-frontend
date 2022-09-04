@@ -163,8 +163,9 @@
         border-bottom: 0;
       }
       @include mobile {
+        display: block;
         padding: 10vw 5vw;
-        border: 2.25vw solid $grey-0;
+        border: 3vw solid $grey-0;
         border-bottom: 0;
       }
     }
@@ -173,14 +174,46 @@
         margin-top: 40px;
       }
     }
-    h3 + p,
-    h3 + ul,
+    .h3 + p,
+    .h3 + ul,
     p + p {
-      margin-top: 12px;
+      @include widescreen {
+        margin-top: 12px;
+      }
+      @include desktop {
+        margin-top: vw(12px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        margin-top: 5vw;
+      }
     }
-    p + h3,
-    ul + h3 {
-      margin-top: 40px;
+    p + .h3,
+    ul + .h3 {
+      @include widescreen {
+        margin-top: 40px;
+      }
+      @include desktop {
+        margin-top: vw(40px);
+      }
+      @include tablet {
+        // TODO
+      }
+      @include mobile {
+        margin-top: 15vw;
+      }
+    }
+    .h3 + .h2 {
+      @include mobile {
+        margin: 5vw 0;
+      }
+    }
+    .h2 + p {
+      @include mobile {
+        margin-top: 5vw;
+      }
     }
     ul.people {
       display: flex;
@@ -194,12 +227,11 @@
         margin: 14px 0;
       }
       @include tablet {
-        gap: 20px; // TODO
-        margin: 14px 0;
+        // TODO
       }
       @include mobile {
-        gap: 20px; // TODO
-        margin: 14px 0;
+        gap: 3vw;
+        margin: 10vw 0;
       }
       li {
         display: flex;
@@ -228,7 +260,7 @@
           @include mobile {
             width: 18vw;
             height: 18vw;
-            margin-right: 5vw;
+            margin-right: 3vw;
           }
           img {
             width: 100%;
@@ -275,8 +307,17 @@
       flex-direction: column;
     }
     .block > img {
-      max-width: 100%;
       height: auto;
+      @include widescreen {
+      }
+      @include desktop {
+      }
+      @include tablet {
+      }
+      @include mobile {
+        width: 94vw;
+        margin: 10vw 0 -10vw -5vw;
+      }
     }
   }
 }

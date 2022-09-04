@@ -1,64 +1,94 @@
-<Section @id='activities'>
-  <ul>
-    <li id='chemistry' class={{if this.showChemistry 'show' 'hide'}}>
-      <div class='text'>
-        <h3 class='h3'>what we do #1</h3>
-        <h2 class='h2'>Chemistry for soldering electronics</h2>
-        <Waypoint @onFirstView={{fn (mut this.showChemistry)}} />
-        <p>The Interflux Group sells and supports the soldering materials
-          produced by Interflux Electronics. Other materials in the portfolio
-          are adhesives, cleaners, conformal coatings etc…</p>
-      </div>
+<section id='activities'>
+  <div class='liner'>
+    <ul>
+      <li id='chemistry' class='block {{if this.showChemistry "show" "hide"}}'>
+        <div class='text'>
+          <h3 class='h3'>what we do #1</h3>
+          <h2 class='h2'>Chemistry for soldering electronics</h2>
+          <Waypoint @onFirstView={{fn (mut this.showChemistry)}} />
+          <p>The Interflux Group sells and supports the soldering materials
+            produced by Interflux Electronics. Other materials in the portfolio
+            are adhesives, cleaners, conformal coatings etc…</p>
+        </div>
 
-      <img
-        src='{{cdn}}/images/group/chemistry@1016x684.jpg'
-        width='508'
-        height='342'
-        alt='X-ray close up of a perfect wetting on the soldering joint of an electronics component'
-      />
-    </li>
+        {{#if (media 'mobile')}}
+          <img
+            src='{{cdn}}/images/group/chemistry-mobile@750x600.webp'
+            width='375'
+            height='300'
+            alt='X-ray close up of a perfect wetting on the soldering joint of an electronics component'
+          />
+        {{else}}
+          <img
+            src='{{cdn}}/images/group/chemistry@1016x684.webp'
+            width='508'
+            height='342'
+            alt='X-ray close up of a perfect wetting on the soldering joint of an electronics component'
+          />
+        {{/if}}
+      </li>
 
-    <li id='machines' class={{if this.showMachines 'show' 'hide'}}>
-      <div class='text'>
-        <h3 class='h3'>what we do #2</h3>
-        <h2 class='h2'>Equipment for manufacturing electronics</h2>
-        <Waypoint @onFirstView={{fn (mut this.showMachines)}} />
-        <p>
-          <span>Selective and wave soldering machines, reflow ovens, AOI, SPI,
-          </span>
-          <span>X-ray, cleaning machines and manual soldering equipment </span>
-          <span>are just a selection out of the high end portfolio </span>
-          <span>of the Interflux Group. Interflux Singapore </span>
-          <span>develops and manufacturers jet and </span>
-          <span>spray fluxing systems.</span>
-        </p>
-      </div>
+      <li id='machines' class='block {{if this.showMachines "show" "hide"}}'>
+        <div class='text'>
+          <h3 class='h3'>what we do #2</h3>
+          <h2 class='h2'>Equipment for manufacturing electronics</h2>
+          <Waypoint @onFirstView={{fn (mut this.showMachines)}} />
+          <p>
+            <span>Selective and wave soldering machines, reflow ovens, AOI, SPI,
+            </span>
+            <span>X-ray, cleaning machines and manual soldering equipment
+            </span>
+            <span>are just a selection out of the high end portfolio </span>
+            <span>of the Interflux Group. Interflux Singapore </span>
+            <span>develops and manufacturers jet and </span>
+            <span>spray fluxing systems.</span>
+          </p>
+        </div>
 
-      <img
-        src='{{cdn}}/images/group/machine@1291x990.jpg'
-        width='645'
-        height='495'
-        alt='Ersa preheating oven'
-      />
-    </li>
+        {{#if (media 'mobile')}}
+          <img
+            src='{{cdn}}/images/group/machine-mobile@750x600.webp'
+            width='375'
+            height='300'
+            alt='Ersa preheating oven'
+          />
+        {{else}}
+          <img
+            src='{{cdn}}/images/group/machine@1291x990.webp'
+            width='645'
+            height='495'
+            alt='Ersa preheating oven'
+          />
+        {{/if}}
+      </li>
 
-    <li id='know-how' class={{if this.showKnowhow 'show' 'hide'}}>
-      <div class='text'>
-        <h3 class='h3'>what we do #3</h3>
-        <h2 class='h2'>Know-how transfers</h2>
-        <Waypoint @onFirstView={{fn (mut this.showKnowhow)}} />
-        <p>+42 years of international technical and process experience is shared
-          with our customers by means of free webinars, on site trainings and
-          start-ups. Good process knowledge is essential to produce a high
-          quality end product.</p>
-      </div>
+      <li id='know-how' class='block {{if this.showKnowhow "show" "hide"}}'>
+        <div class='text'>
+          <h3 class='h3'>what we do #3</h3>
+          <h2 class='h2'>Know-how transfers</h2>
+          <Waypoint @onFirstView={{fn (mut this.showKnowhow)}} />
+          <p>+42 years of international technical and process experience is
+            shared with our customers by means of free webinars, on site
+            trainings and start-ups. Good process knowledge is essential to
+            produce a high quality end product.</p>
+        </div>
 
-      <img
-        src='{{cdn}}/images/group/know-how@1044x816.webp'
-        width='522'
-        height='408'
-        alt='two people in a laboratory pointing at a screen'
-      />
-    </li>
-  </ul>
-</Section>
+        {{#if (media 'mobile')}}
+          <img
+            src='{{cdn}}/images/group/know-how-mobile@750x600.webp'
+            width='375'
+            height='300'
+            alt='two people in a laboratory pointing at a screen'
+          />
+        {{else}}
+          <img
+            src='{{cdn}}/images/group/know-how@1044x816.webp'
+            width='522'
+            height='408'
+            alt='two people in a laboratory pointing at a screen'
+          />
+        {{/if}}
+      </li>
+    </ul>
+  </div>
+</section>

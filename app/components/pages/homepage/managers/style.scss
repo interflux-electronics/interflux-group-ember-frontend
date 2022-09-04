@@ -1,4 +1,9 @@
 #home #managers {
+  .liner {
+    @include mobile {
+      margin: 0;
+    }
+  }
   h2 {
     text-align: center;
     @include widescreen {
@@ -30,7 +35,9 @@
       // TODO
     }
     @include mobile {
-      // TODO
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4vw;
     }
     li {
       display: flex;
@@ -45,7 +52,7 @@
         // TODO
       }
       @include mobile {
-        // TODO
+        gap: 4vw;
       }
       img {
         border-radius: 50%;

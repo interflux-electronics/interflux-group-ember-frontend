@@ -1,5 +1,13 @@
 #home #activities {
   overflow: hidden;
+  .liner {
+    @include tablet {
+      // TODO
+    }
+    @include mobile {
+      margin: 0;
+    }
+  }
   ul {
     display: flex;
     flex-direction: column;
@@ -26,16 +34,26 @@
         padding: 0 vw(60px) 0 vw(180px);
         gap: vw(60px);
       }
+      @include tablet {
+      }
+      @include mobile {
+      }
       &#chemistry {
         flex-direction: row-reverse;
         &.hide {
           .text {
             opacity: 0;
             transform: translateY(-20vh);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
           img {
             opacity: 0;
             transform: translateY(20vh);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
         }
         .text,
@@ -43,7 +61,18 @@
           transition: all 2000ms $easeOutExpo;
         }
         h2 {
-          width: 70%;
+          @include widescreen {
+            width: 70%;
+          }
+          @include desktop {
+            width: 70%;
+          }
+          @include tablet {
+            // TODO
+          }
+          @include mobile {
+            width: 90%;
+          }
         }
         img {
           height: auto;
@@ -61,10 +90,16 @@
           .text {
             opacity: 0;
             transform: translateX(-20vw);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
           img {
             opacity: 0;
             transform: translateX(20vw);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
         }
         .text,
@@ -75,12 +110,27 @@
           position: relative;
           z-index: 1;
           h2 {
-            width: 160%;
+            @include widescreen {
+              width: 160%;
+            }
+            @include desktop {
+              width: 160%;
+            }
           }
           p {
-            width: 200%;
+            @include widescreen {
+              width: 200%;
+            }
+            @include desktop {
+              width: 200%;
+            }
             span {
-              display: block;
+              @include widescreen {
+                display: block;
+              }
+              @include desktop {
+                display: block;
+              }
             }
           }
         }
@@ -105,10 +155,16 @@
           .text {
             opacity: 0;
             transform: translateY(-20vw);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
           img {
             opacity: 0;
             transform: translateY(20vw);
+            @include mobile {
+              transform: translateY(20vh);
+            }
           }
         }
         .text,
