@@ -6,10 +6,15 @@
   &.active {
     .hero {
       button {
-        @include desktop-and-up {
+        @include widescreen {
           border-radius: 4px 4px 0 0;
           width: 600px;
           height: 300px;
+        }
+        @include desktop {
+          border-radius: vw(4px) vw(4px) 0 0;
+          width: vw(600px);
+          height: vw(300px);
         }
         @include tablet {
           width: 100vw;
@@ -23,10 +28,15 @@
     }
     .content {
       opacity: 1;
-      width: 600px;
-      @include desktop-and-up {
+      @include widescreen {
+        width: 600px;
         background: white;
         box-shadow: 0 4px 14px rgba(black, 0.15);
+      }
+      @include desktop {
+        width: vw(600px);
+        background: white;
+        box-shadow: 0 vw(4px) vw(14px) rgba(black, 0.15);
       }
       @include tablet-and-below {
         width: 100vw;
@@ -37,11 +47,16 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
+    @include widescreen {
+      height: 300px;
+    }
+    @include desktop {
+      height: vw(300px);
+    }
     @include tablet {
       height: 50vw;
     }
@@ -62,8 +77,14 @@
       background: none;
       overflow: hidden;
       transition: all 1500ms $easeOutExpo;
-      width: 300px;
-      height: 108px;
+      @include widescreen {
+        width: 300px;
+        height: 108px;
+      }
+      @include desktop {
+        width: vw(300px);
+        height: vw(108px);
+      }
       @include tablet {
         width: 100vw;
         height: 50vw;
@@ -78,9 +99,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        @include desktop-and-up {
+        @include widescreen {
           width: 300px;
           height: 108px;
+        }
+        @include desktop {
+          width: vw(300px);
+          height: vw(108px);
         }
         @include tablet {
           width: 42vw;
@@ -113,7 +138,12 @@
     position: relative;
     border-radius: 4px;
     transition: all 1500ms $easeOutExpo;
-    width: 300px;
+    @include widescreen {
+      width: 300px;
+    }
+    @include desktop {
+      width: vw(300px);
+    }
     &.show {
       opacity: 1;
     }
@@ -174,8 +204,11 @@
       }
     }
     .block + .block {
-      @include desktop-and-up {
+      @include widescreen {
         margin-top: 40px;
+      }
+      @include desktop {
+        margin-top: vw(40px);
       }
       @include tablet {
         margin-top: 2vw;

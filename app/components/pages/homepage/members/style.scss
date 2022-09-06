@@ -229,10 +229,14 @@
   }
   #slides {
     position: relative;
-    min-height: 300px;
     transition: all 1500ms $easeOutExpo;
-    @include desktop-and-up {
+    @include widescreen {
       width: 600px;
+      min-height: 300px;
+    }
+    @include desktop {
+      width: vw(600px);
+      min-height: vw(300px);
     }
     @include tablet-and-below {
       width: 100vw;
@@ -242,16 +246,22 @@
       transition: all 1500ms $easeOutExpo;
       display: flex;
       align-items: flex-start;
-      @include desktop-and-up {
+      @include widescreen {
         gap: 100px;
+      }
+      @include desktop {
+        gap: vw(100px);
       }
       @include tablet-and-below {
         gap: 2.5vw;
       }
       @for $i from 0 through 14 {
         &[data-shown-slide='#{$i}'] {
-          @include desktop-and-up {
+          @include widescreen {
             left: calc(400px * -1 * $i);
+          }
+          @include desktop {
+            left: calc(33.3333333333vw * -1 * $i);
           }
           @include tablet-and-below {
             left: calc(102.5vw * -1 * $i);
