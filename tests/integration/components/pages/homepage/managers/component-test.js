@@ -9,7 +9,7 @@ module('Integration | Component | pages/homepage/managers', function (hooks) {
   test('it renders', async function (assert) {
     await render(hbs`<Pages::Homepage::Managers />`);
 
-    const headings = this.element.querySelectorAll('h4');
+    const headings = this.element.querySelectorAll('li strong');
     const expected = [
       'Daniel Werkhoven',
       'Annick Peeters',
