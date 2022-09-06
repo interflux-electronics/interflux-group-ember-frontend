@@ -1,4 +1,7 @@
 #home #about-us {
+  @include tablet {
+    margin: 2vw 0;
+  }
   .text {
     position: relative;
     z-index: 1;

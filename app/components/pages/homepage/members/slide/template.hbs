@@ -13,14 +13,16 @@
       <div class='inner'>
         {{#if c.coreActivity}}
           <div class='block'>
-            <h3>Core activity</h3>
+            <h3 class='h3'>Core activity</h3>
             {{markdown c.coreActivity}}
           </div>
         {{/if}}
 
         {{#if c.companyMembers}}
           <div class='block'>
-            <h3>Team members</h3>
+            <h3 class='h3'>Team members</h3>
+            <Members @members={{c.members}} />
+            {{!--
             <ul class='people'>
               {{#each c.members as |member|}}
                 {{#let member.person as |person|}}
@@ -53,6 +55,7 @@
                 {{/let}}
               {{/each}}
             </ul>
+            --}}
             {{#if (gt c.hiddenPeopleCount 0)}}
               <p>+ {{c.hiddenPeopleCount}} more valuable people</p>
             {{/if}}

@@ -5,74 +5,28 @@
     }
   }
   h2 {
-    text-align: center;
     @include widescreen {
+      text-align: center;
       margin: 80px 0;
     }
     @include desktop {
+      text-align: center;
       margin: vw(80px) 0;
-    }
-    @include tablet {
-      // TODO
-    }
-    @include mobile {
-      // TODO
     }
   }
   ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     @include widescreen {
-      gap: 80px;
-      margin: 80px 0 100px;
+      flex-direction: row;
+      margin: 0 auto 90px;
+      width: 940px;
     }
     @include desktop {
-      gap: vw(80px);
-      margin: vw(80px) 0 vw(100px);
-    }
-    @include tablet {
-      // TODO
-    }
-    @include mobile {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4vw;
+      flex-direction: row;
+      margin: 0 auto vw(90px);
+      width: vw(940px);
     }
     li {
-      display: flex;
-      align-items: center;
-      @include widescreen {
-        gap: 18px;
-      }
-      @include desktop {
-        gap: vw(18px);
-      }
-      @include tablet {
-        // gap: 2vw;
-      }
-      @include mobile {
-        gap: 4vw;
-      }
-      img {
-        border-radius: 50%;
-        height: auto;
-        @include widescreen {
-          width: 75px;
-        }
-        @include desktop {
-          width: vw(75px);
-        }
-        @include tablet {
-        }
-        @include mobile {
-        }
-      }
-      .text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
+      flex: 1;
     }
   }
 }

@@ -1,0 +1,32 @@
+<ul class='members'>
+  {{#each @members as |member|}}
+    {{#let member.person as |person|}}
+      <li>
+        <div class='avatar'>
+          {{#if person.avatarPath}}
+            <ResponsiveImage
+              @path={{person.avatarPath}}
+              @variations={{person.avatarVariations}}
+              @alt='{{person.firstName}} {{person.lastName}}'
+            />
+          {{else}}
+            <img
+              src='{{env "cdnHost"}}/images/public/no-avatar.svg'
+              aria-hidden='true'
+              width='27'
+              height='27'
+            />
+          {{/if}}
+        </div>
+        <div class='text'>
+          <p>
+            <strong>{{person.firstName}}
+              {{person.lastName}}</strong>
+            <span> {{person.chineseName}}</span>
+          </p>
+          <p>{{member.title}}</p>
+        </div>
+      </li>
+    {{/let}}
+  {{/each}}
+</ul>

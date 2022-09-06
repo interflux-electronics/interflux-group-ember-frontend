@@ -149,7 +149,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2vw;
         width: 100vw;
       }
       @include mobile {
@@ -162,7 +161,6 @@
       }
       @include tablet {
         padding: 6vw;
-        // border: 2vw solid $grey-0;
         border-bottom: 0;
         width: 70vw;
         box-shadow: 0 2px 4px rgba(black, 0.1);
@@ -199,6 +197,20 @@
         margin-top: 5vw;
       }
     }
+    .h3 + ul.members {
+      @include widescreen {
+        margin-top: 20px;
+      }
+      @include desktop {
+        margin-top: vw(20px);
+      }
+      @include tablet {
+        margin-top: 2.4vw;
+      }
+      @include mobile {
+        margin-top: 6vw;
+      }
+    }
     p + .h3,
     ul + .h3 {
       @include widescreen {
@@ -228,66 +240,6 @@
       }
       @include mobile {
         margin-top: 5vw;
-      }
-    }
-    ul.people {
-      display: flex;
-      flex-direction: column;
-      @include widescreen {
-        gap: 20px;
-        margin: 14px 0;
-      }
-      @include desktop {
-        gap: vw(20px);
-        margin: 14px 0;
-      }
-      @include tablet {
-        gap: 2vw;
-        margin: 3vw 0;
-      }
-      @include mobile {
-        gap: 3vw;
-        margin: 5vw 0;
-      }
-      li {
-        display: flex;
-        align-items: center;
-        .avatar {
-          display: flex;
-          align-items: center;
-          border-radius: 50%;
-          overflow: hidden;
-          flex-shrink: 0;
-          @include widescreen {
-            width: 70px;
-            height: 70px;
-            margin-right: 16px;
-          }
-          @include desktop {
-            width: vw(70px);
-            height: vw(70px);
-            margin-right: vw(16px);
-          }
-          @include tablet {
-            width: 9.5vw;
-            height: 9.5vw;
-            margin-right: 2vw;
-          }
-          @include mobile {
-            width: 17vw;
-            height: 17vw;
-            margin-right: 3vw;
-          }
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .text {
-          p + p {
-            margin-top: 0;
-          }
-        }
       }
     }
     ul.countries {
