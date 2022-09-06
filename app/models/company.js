@@ -34,7 +34,7 @@ export default class CompanyModel extends Model {
   }
 
   get markets() {
-    return this.companyMarkets.sortBy('rankAmongMembers').mapBy('country');
+    return this.companyMarkets.mapBy('country').sortBy('nameEnglish');
   }
 
   get rank() {
