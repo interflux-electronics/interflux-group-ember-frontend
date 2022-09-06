@@ -42,11 +42,10 @@ export default class PagesHomepageMembersComponent extends Component {
   showCompany(i) {
     const n = this.companies.length;
     const ii = i < 0 ? 0 : i < n ? i : n - 1;
-    const height = document.querySelectorAll('#slides .slide')[ii].offsetHeight;
     this.shownSlide = ii;
     this.shownContent = null;
-    this.slideHeight = height;
     this.showContentSoon(ii);
+    this.resize();
   }
 
   // TODO: remove?
@@ -69,5 +68,26 @@ export default class PagesHomepageMembersComponent extends Component {
 
   get slidesStyle() {
     return htmlSafe(`height: ${this.slideHeight}px`);
+  }
+
+  // Akward things happen when the screen is resized.
+  // Without this event listener user may be unable to scroll to the bottom on
+  // mobile or tablets.
+  constructor() {
+    super(...arguments);
+
+    window.addEventListener('resize', () => {
+      this.resize();
+    });
+  }
+
+  resize() {
+    if (this.companies) {
+      const i = this.shownSlide;
+      const slides = document.querySelectorAll('#slides .slide');
+      const height = slides[i].offsetHeight;
+
+      this.slideHeight = height;
+    }
   }
 }
