@@ -2,11 +2,7 @@
 
 <main id='home'>
   {{#if (or (media 'isMobile') (media 'isTablet'))}}
-    {{#if @loading}}
-      <Pages::Homepage::Loading />
-    {{else}}
-      <Pages::Homepage::Members @companies={{@companies}} />
-    {{/if}}
+    {{outlet}}
   {{/if}}
 
   {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
