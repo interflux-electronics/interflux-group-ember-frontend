@@ -23,6 +23,10 @@
     @include desktop {
       width: vw(580px);
     }
+    @include tablet {
+      width: 140%;
+      margin-top: 5vw;
+    }
   }
   .liner {
     display: flex;
@@ -36,7 +40,8 @@
       gap: vw(40px);
     }
     @include tablet {
-      // TODO
+      flex-direction: column;
+      margin: 0;
     }
     @include mobile {
       flex-direction: column;

@@ -12,7 +12,13 @@ export default class PagesHomepageLocationsComponent extends Component {
   @tracked inView = false;
 
   get options() {
-    const zoom = this.media.isWidescreen ? 1.5 : 1.3;
+    const zoom = this.media.isWidescreen
+      ? 1.5
+      : this.media.isDesktop
+      ? 1.3
+      : this.media.isTablet
+      ? 0.4
+      : 0;
 
     return {
       accessToken: ENV.mapboxAccessToken,
@@ -59,6 +65,10 @@ export default class PagesHomepageLocationsComponent extends Component {
   }
 
   async addMarker(company, delay) {
+    if (company.isGroup) {
+      return;
+    }
+
     await this.window.delay(delay);
 
     const marker = document.querySelector(`#marker-for-${company.slug}`);

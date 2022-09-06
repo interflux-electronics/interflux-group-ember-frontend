@@ -37,6 +37,7 @@ export default class PagesHomepageMembersComponent extends Component {
     }
   }
 
+  // TODO: reset the height each time the window resizes
   @action
   showCompany(i) {
     const n = this.companies.length;
@@ -48,6 +49,7 @@ export default class PagesHomepageMembersComponent extends Component {
     this.showContentSoon(ii);
   }
 
+  // TODO: remove?
   async showContentSoon(i) {
     await this.window.delay(0);
     if (this.shownSlide === i) {

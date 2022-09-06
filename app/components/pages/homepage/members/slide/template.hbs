@@ -75,14 +75,14 @@
 
         {{#if c.history}}
           <div class='block'>
-            <h3>History</h3>
+            <h3 class='h3'>History</h3>
             {{markdown c.history}}
           </div>
         {{/if}}
 
         {{#if (or c.website c.emailGeneral c.phone c.address)}}
           <div class='block'>
-            <h3>Contact us</h3>
+            <h3 class='h3'>Contact us</h3>
             <p class='contacts'>
               <p class='p address'>
                 {{#if c.legalName}}

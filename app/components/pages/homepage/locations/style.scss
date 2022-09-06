@@ -26,6 +26,9 @@
     position: relative;
   }
   @include tablet {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 70vw;
   }
   @include mobile {
     display: flex;
@@ -41,12 +44,15 @@
       height: vw(740px);
     }
     @include tablet {
-      // TODO
+      height: 40vw;
+      width: 74vw;
+      transform: translateX(-2vw);
+      border-radius: 1vw;
+      margin-top: -2vw;
     }
     @include mobile {
-      height: 100vw;
-      width: 94vw;
-      left: 3vw;
+      height: 60vw;
+      width: 100vw;
     }
   }
   #markers {
@@ -63,6 +69,14 @@
     @include desktop {
       width: vw(30px);
       height: vw(30px);
+    }
+    @include tablet {
+      width: 3vw;
+      height: 3vw;
+    }
+    @include mobile {
+      width: 5vw;
+      height: 5vw;
     }
     &.shadow {
       z-index: 1;
@@ -102,8 +116,6 @@
     @include desktop {
       top: vw(30px);
       transform: translateX(#{vw(-400px)});
-    }
-    @include tablet {
     }
     @include mobile {
     }

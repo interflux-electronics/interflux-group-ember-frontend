@@ -14,15 +14,15 @@
     {{/each}}
   </div>
 
-  {{#if (media 'mobile')}}
+  {{#if (or (media 'mobile') (media 'tablet'))}}
     <div class='text-mobile block'>
       <h2 class='h2'>Coordinated by 14 companies across the world</h2>
-      <Waypoint @onFirstView={{this.onFirstView}} />
       <p>
         Combined we serve customers in 80+ countries. Our intent is to be
         present in all major hubs of the electronics industry so we can can
         localise our customer support and better understand local market trends.
       </p>
+      <Waypoint @onFirstView={{this.onFirstView}} />
     </div>
   {{else}}
     <div class='text'>
@@ -38,7 +38,7 @@
     </div>
   {{/if}}
 
-  {{#if (not (media 'mobile'))}}
+  {{#if (not (or (media 'mobile') (media 'tablet')))}}
     <img
       id='logo'
       src='{{cdn}}/images/logos/interflux-group-logo-white.svg'
