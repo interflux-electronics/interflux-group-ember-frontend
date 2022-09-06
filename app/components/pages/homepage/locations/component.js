@@ -6,26 +6,31 @@ import ENV from 'interflux-group/config/environment';
 
 export default class PagesHomepageLocationsComponent extends Component {
   @service window;
+  @service media;
 
   @tracked map;
   @tracked inView = false;
 
-  options = {
-    accessToken: ENV.mapboxAccessToken,
-    container: 'mapbox',
-    style: 'mapbox://styles/jw-floatplane-dev/ck8mcsfr50uwe1iohs6xv6n0d',
-    center: { lon: 15, lat: 30 },
-    zoom: 1.5,
-    boxZoom: false,
-    cooperativeGestures: false,
-    doubleClickZoom: false,
-    dragPan: false,
-    dragRotate: false,
-    pitchWithRotate: false,
-    scrollZoom: false,
-    touchPitch: false,
-    touchZoomRotate: false
-  };
+  get options() {
+    const zoom = this.media.isWidescreen ? 1.5 : 1.3;
+
+    return {
+      accessToken: ENV.mapboxAccessToken,
+      container: 'mapbox',
+      style: 'mapbox://styles/jw-floatplane-dev/ck8mcsfr50uwe1iohs6xv6n0d',
+      center: { lon: 20, lat: 30 },
+      zoom,
+      boxZoom: false,
+      cooperativeGestures: false,
+      doubleClickZoom: false,
+      dragPan: false,
+      dragRotate: false,
+      pitchWithRotate: false,
+      scrollZoom: false,
+      touchPitch: false,
+      touchZoomRotate: false
+    };
+  }
 
   @action
   async onInsert() {

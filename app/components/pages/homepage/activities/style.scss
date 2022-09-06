@@ -59,6 +59,7 @@
         .text,
         img {
           transition: all 2000ms $easeOutExpo;
+          transition-property: opacity, transform;
         }
         h2 {
           @include widescreen {
@@ -105,6 +106,7 @@
         .text,
         img {
           transition: all 2000ms $easeOutExpo;
+          transition-property: opacity, transform;
         }
         .text {
           position: relative;
@@ -143,7 +145,7 @@
           }
           @include desktop {
             width: vw(660px);
-            transform: translateY(0.666vw);
+            transform: translateY(#{vw(80px)});
             padding-top: vw(40px);
           }
         }
@@ -170,6 +172,7 @@
         .text,
         img {
           transition: all 2000ms $easeOutExpo;
+          transition-property: opacity, transform;
         }
         img {
           height: auto;

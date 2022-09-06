@@ -35,10 +35,10 @@
     position: relative;
     z-index: 1;
     @include widescreen {
-      height: 60vw;
+      height: 740px;
     }
     @include desktop {
-      height: 60vw;
+      height: vw(740px);
     }
     @include tablet {
       // TODO
@@ -88,7 +88,6 @@
   .text {
     position: absolute;
     z-index: 2;
-    top: 0;
     left: 0;
     height: 100%;
     display: flex;
@@ -96,11 +95,17 @@
     justify-content: center;
     box-sizing: border-box;
     left: 50%;
-    @media (min-width: 1901px) {
-      transform: translateX(-860px);
+    @include widescreen {
+      top: 30px;
+      transform: translateX(-400px);
     }
-    @media (max-width: 1900px) {
-      transform: translateX(-30vw);
+    @include desktop {
+      top: vw(30px);
+      transform: translateX(#{vw(-400px)});
+    }
+    @include tablet {
+    }
+    @include mobile {
     }
     h2,
     p {
@@ -110,7 +115,7 @@
           width: 240px;
         }
         @include desktop {
-          width: 17vw;
+          width: vw(240px);
         }
       }
       &:nth-of-type(2) {
