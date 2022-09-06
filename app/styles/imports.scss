@@ -21,9 +21,9 @@
 @import 'app/components/section/style';
 @import 'app/components/responsive-image/style';
 @import 'app/components/load-spinner/style';
+@import 'app/components/flag/style';
 
 // Bespoke components
-@import 'app/components/pages/homepage/style';
 @import 'app/components/pages/homepage/loading/style';
 @import 'app/components/pages/homepage/hero/style';
 @import 'app/components/pages/homepage/about-us/style';
@@ -32,5 +32,3 @@
 @import 'app/components/pages/homepage/managers/style';
 @import 'app/components/pages/homepage/members/style';
 @import 'app/components/pages/homepage/members/slide/style';
-@import 'app/components/pages/under-construction/style';
-@import 'app/components/flag/style';

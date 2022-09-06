@@ -1,2 +1,18 @@
 <HeadLayout />
-{{outlet}}
+
+<main id='home'>
+  {{#if (or (media 'isMobile') (media 'isTablet'))}}
+    {{#if @loading}}
+      <Pages::Homepage::Loading />
+    {{else}}
+      <Pages::Homepage::Members @companies={{@companies}} />
+    {{/if}}
+  {{/if}}
+
+  {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
+    <Pages::Homepage::Hero />
+    <Pages::Homepage::AboutUs />
+    <Pages::Homepage::Activities />
+    {{outlet}}
+  {{/if}}
+</main>
