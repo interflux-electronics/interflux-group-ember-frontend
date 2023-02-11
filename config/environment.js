@@ -12,31 +12,36 @@ const apiNamespace = 'v1/public';
 
 // Where the Rails backend is located
 const apiHosts = {
-  development: 'http://localhost:3000',
-  production: 'https://api.interflux.com'
-};
-
-// Where this Ember app is located
-const publicHosts = {
-  development: 'http://localhost:4200',
-  production: 'https://interflux.com'
-};
-
-const adminHosts = {
-  development: 'http://localhost:4300',
-  production: 'https://admin.interflux.com'
-};
-
-const groupHosts = {
-  development: 'http://localhost:4400',
-  production: 'https://interflux.group'
+  production: 'https://rails.api.interflux.com',
+  development: 'http://localhost:3000'
 };
 
 // Where the CDN is located
 const cdnHosts = {
+  production: 'https://cdn.interflux.com',
   development: 'http://localhost:9000',
-  test: 'http://localhost:9000',
-  production: 'https://cdn.interflux.com'
+  test: 'http://localhost:9000'
+};
+
+// Where this Ember app is located
+const publicHosts = {
+  production: 'https://interflux.com',
+  development: 'http://localhost:4200'
+};
+
+const adminHosts = {
+  production: 'https://admin.interflux.com',
+  development: 'http://localhost:4300'
+};
+
+const groupHosts = {
+  production: 'https://interflux.group',
+  development: 'http://localhost:4400'
+};
+
+const lmpaHosts = {
+  production: 'https://lmpa-q.com',
+  development: 'http://localhost:4500'
 };
 
 // The UTC date and time of when this build was compiled
@@ -51,16 +56,15 @@ module.exports = function (env) {
 
   // Hosts
   const apiHost = apiHosts[env];
+  const cdnHost = cdnHosts[env];
   const publicHost = publicHosts[env];
   const adminHost = adminHosts[env];
   const groupHost = groupHosts[env];
-  const cdnHost = cdnHosts[env];
+  const lmpaHost = lmpaHosts[env];
 
   const ENV = {
     appName: PKG.name,
     modulePrefix: PKG.name,
-    // podModulePrefix: `${PKG.name}/pods`,
-    // podModulePrefix: `${PKG.name}`,
     environment: env,
     rootURL: '/',
     locationType: 'history',
@@ -75,15 +79,20 @@ module.exports = function (env) {
     isDevelopment,
     isTest,
     isProduction,
+
     apiHost,
+    cdnHost,
     publicHost,
     adminHost,
     groupHost,
-    cdnHost,
+    lmpaHost,
+
     apiNamespace,
+
     gitBranch,
     gitRevision,
     buildTimestamp,
+
     mapboxAccessToken:
       'pk.eyJ1IjoianctZmxvYXRwbGFuZS1kZXYiLCJhIjoiY2s4bW02N3UyMG93MTNycGduNzJqOGt6OCJ9.PHUKAn3CMmN73tmJXpa0ug'
   };
