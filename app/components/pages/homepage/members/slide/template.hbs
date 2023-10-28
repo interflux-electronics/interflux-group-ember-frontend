@@ -21,41 +21,7 @@
         {{#if c.companyMembers}}
           <div class='block'>
             <h3 class='h3'>Team members</h3>
-            <Members @members={{c.members}} />
-            {{!--
-            <ul class='people'>
-              {{#each c.members as |member|}}
-                {{#let member.person as |person|}}
-                  <li>
-                    <div class='avatar'>
-                      {{#if person.avatarPath}}
-                        <ResponsiveImage
-                          @path={{person.avatarPath}}
-                          @variations={{person.avatarVariations}}
-                          @alt={{person.fullName}}
-                        />
-                      {{else}}
-                        <img
-                          src='{{env "cdnHost"}}/images/public/no-avatar.svg'
-                          aria-hidden='true'
-                          width='27'
-                          height='27'
-                        />
-                      {{/if}}
-                    </div>
-                    <div class='text'>
-                      <p>
-                        <strong>{{person.firstName}}
-                          {{person.lastName}}</strong>
-                        <span> {{person.chineseName}}</span>
-                      </p>
-                      <p>{{member.title}}</p>
-                    </div>
-                  </li>
-                {{/let}}
-              {{/each}}
-            </ul>
-            --}}
+            <Members @members={{c.members}} @layout='vertical' />
             {{#if (gt c.hiddenPeopleCount 0)}}
               <p>+ {{c.hiddenPeopleCount}} more valuable people</p>
             {{/if}}

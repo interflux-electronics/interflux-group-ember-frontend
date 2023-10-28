@@ -17,6 +17,14 @@ ul.members {
     gap: 3vw;
     margin: 5vw 0;
   }
+  &.horizontal {
+    li {
+      flex-direction: column;
+      p {
+        text-align: center;
+      }
+    }
+  }
   li {
     display: flex;
     align-items: center;

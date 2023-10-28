@@ -20,7 +20,9 @@ export default class PagesHomepageMembersComponent extends Component {
     if (!this.args.companies) {
       return null;
     }
-    const members = this.args.companies.sortBy('rankOnGroupWebsite');
+    const members = this.args.companies
+      .rejectBy('businessName', 'Interflux Group')
+      .sortBy('rankOnGroupWebsite');
     if (this.media.isDesktop || this.media.isWidescreen) {
       return members;
     }

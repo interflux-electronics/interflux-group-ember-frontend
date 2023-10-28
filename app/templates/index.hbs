@@ -4,6 +4,6 @@
 
 {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
   <Pages::Homepage::Locations @companies={{@model.companies}} />
-  <Pages::Homepage::Managers />
+  <Pages::Homepage::Managers @companies={{@model.companies}} />
   <Pages::Homepage::Members @companies={{@model.companies}} />
 {{/if}}

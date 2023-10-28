@@ -1,48 +1,6 @@
 <section id='managers'>
   <div class='liner block'>
     <h2 class={{if (media 'mobile') 'h3' 'h3'}}>Managed by</h2>
-    <Members @members={{this.members}} />
-    {{!--
-    <ul class='people'>
-      <li>
-        <img
-          src='{{cdn}}/images/people/daniel-werkhoven-1@250x250.webp'
-          alt='Daniel Werkhoven'
-          width='75'
-          height='75'
-        />
-        <div class='text'>
-          <h4 class='h3'>Daniel Werkhoven</h4>
-          <p>Founder, Director & CEO</p>
-        </div>
-      </li>
-
-      <li>
-        <img
-          src='{{env "cdnHost"}}/images/people/annick-peeters-2@250x250.webp'
-          aria-hidden='true'
-          width='75'
-          height='75'
-        />
-        <div class='text'>
-          <h4 class='h3'>Annick Peeters</h4>
-          <p>Chief Operating Officer</p>
-        </div>
-      </li>
-
-      <li>
-        <img
-          src='{{cdn}}/images/people/steven-teliszewski@160x160.jpg'
-          alt='Steven Teliszewski'
-          width='75'
-          height='75'
-        />
-        <div class='text'>
-          <h4 class='h3'>Steven Teliszewski</h4>
-          <p>Chief Operating Officer</p>
-        </div>
-      </li>
-    </ul>
-    --}}
+    <Members @members={{this.members}} @layout='horizontal' />
   </div>
 </section>

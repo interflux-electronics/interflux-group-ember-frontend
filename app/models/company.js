@@ -17,6 +17,7 @@ export default class CompanyModel extends Model {
   @attr('number') order;
   @attr('boolean') public;
   @attr('boolean') isHeadquarter;
+  @attr('boolean') shownOnMainWebsite;
   @attr('boolean') shownOnGroupWebsite;
   @attr('string') coreActivity;
   @attr('string') history;
