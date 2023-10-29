@@ -1,9 +1,12 @@
 {{#if (or (media 'isMobile') (media 'isTablet'))}}
-  <Pages::Homepage::Members @companies={{@model.companies}} />
+  <Pages::Homepage::Members
+    @companies={{@model.companies}}
+    @managers={{this.managers}}
+  />
 {{/if}}
 
 {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
   <Pages::Homepage::Locations @companies={{@model.companies}} />
-  <Pages::Homepage::Managers @companies={{@model.companies}} />
+  <Pages::Homepage::Managers @managers={{this.managers}} />
   <Pages::Homepage::Members @companies={{@model.companies}} />
 {{/if}}

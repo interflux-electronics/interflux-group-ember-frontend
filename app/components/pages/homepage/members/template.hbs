@@ -33,6 +33,7 @@
       {{#each this.companies as |company i|}}
         {{#if company.isGroup}}
           <Pages::Homepage::Members::Group
+            @managers={{@managers}}
             @companies={{this.companies}}
             @showSlide={{eq i this.shownSlide}}
             @showContent={{eq i this.shownContent}}

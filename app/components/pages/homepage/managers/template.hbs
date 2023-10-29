@@ -1,6 +1,12 @@
 <section id='managers'>
   <div class='liner block'>
     <h2 class={{if (media 'mobile') 'h3' 'h3'}}>Managed by</h2>
-    <Members @members={{this.members}} @layout='horizontal' />
+    {{#if (or (media 'isMobile') (media 'isTablet'))}}
+      <Members @members={{@managers}} @layout='vertical' />
+    {{/if}}
+
+    {{#if (or (media 'isDesktop') (media 'isWidescreen'))}}
+      <Members @members={{@managers}} @layout='horizontal' />
+    {{/if}}
   </div>
 </section>
